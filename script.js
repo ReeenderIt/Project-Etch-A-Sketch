@@ -15,6 +15,7 @@ gridContainer.before(button);
 
 
 const grid = {
+    sizes: [1, 2, 4, 16, 32, 64],
     fillGrid: function(gridCount, exeFunction) {
         gridContainer.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
@@ -56,4 +57,4 @@ function gridBox() {
 
 
 button.addEventListener('click', gridBox);
-grid.fillGrid(16, gridEvent);
+grid.fillGrid(grid.sizes[3], gridEvent);
