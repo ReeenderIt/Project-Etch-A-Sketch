@@ -24,14 +24,11 @@ const grid = {
         };    
         (exeFunction)();
     },
-};
-
-
-
-function delGrid() {
-    while(gridContainer.hasChildNodes()) {
-        gridContainer.removeChild(gridContainer.firstChild);
-    };
+    clearGrid: function() {
+        while(gridContainer.hasChildNodes()) {
+            gridContainer.removeChild(gridContainer.firstChild);
+        };
+    }
 };
 
 function getGridSize() {
@@ -53,7 +50,7 @@ function gridBox() {
     if (isNaN(size)) {
         return;
     };
-    delGrid();
+    grid.clearGrid();
     grid.fillGrid(size, gridEvent);
 };
 
