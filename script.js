@@ -5,13 +5,19 @@ const button = document.createElement('button');
 button.textContent = 'Change Grid';
 button.classList.toggle('btn')
 const gridContainer = document.getElementById('grid-container');
-const changeColor = (e) => {e.target.classList.add('high-lighted')};
 
 
 
 body.prepend(container);
 container.appendChild(gridContainer);
 gridContainer.before(button);
+
+
+
+const changeColor = {
+    defColor: (e) => {e.target.classList.add('high-lighted')}
+};
+
 
 
 
@@ -43,7 +49,7 @@ function gridEvent() {
     const gridItems = document.querySelectorAll('.grid-item');
 
     gridItems.forEach(function(divItem) {
-        divItem.addEventListener('mouseover', changeColor)
+        divItem.addEventListener('mouseover', changeColor.defColor)
     });
 };
 
