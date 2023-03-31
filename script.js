@@ -15,7 +15,8 @@ gridContainer.before(button);
 
 
 const changeColor = {
-    defColor: (e) => {e.target.classList.add('high-lighted')}
+    defColor: (e) => {e.target.style.backgroundColor = "black"},
+
 };
 
 
