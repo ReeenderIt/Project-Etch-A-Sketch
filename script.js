@@ -14,6 +14,7 @@ container.appendChild(gridContainer);
 gridContainer.before(button);
 
 
+
 const grid = {
     sizes: [1, 2, 4, 16, 32, 64],
     fillGrid: function(gridCount, exeFunction) {
@@ -44,6 +45,19 @@ function gridEvent() {
     gridItems.forEach(function(divItem) {
         divItem.addEventListener('mouseover', changeColor)
     });
+};
+
+function rainbowColor() {
+    const limit = {
+        max: 255,
+        min: 0
+    };
+    const randomNumber = () => Math.floor(Math.random() * (limit.max - limit.min + 1)) + limit.min;
+    const color = {
+        red: randomNumber(),
+        green: randomNumber(),
+        blue: randomNumber()
+    }
 };
 
 function gridBox() {
