@@ -24,7 +24,7 @@ const changeColor = {
 
 const grid = {
     sizes: [1, 2, 4, 16, 32, 64],
-    fillGrid: function(gridCount, exeFunction) {
+    fillGrid: (gridCount, exeFunction) => {
         gridContainer.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
             const gridItem = document.createElement('div');
@@ -33,7 +33,7 @@ const grid = {
         };    
         (exeFunction)();
     },
-    clearGrid: function() {
+    clearGrid: () => {
         while(gridContainer.hasChildNodes()) {
             gridContainer.removeChild(gridContainer.firstChild);
         };
