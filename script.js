@@ -28,7 +28,6 @@ const grid = {
         wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
             const item = document.createElement('div');
-            gridItem.classList.toggle('grid-item');
             wrapper.appendChild(item);
         };    
         (exeFunction)();
@@ -47,9 +46,8 @@ function getGridSize() {
 };
 
 function gridEvent() {
-    const gridItems = document.querySelectorAll('.grid-item');
-
-    gridItems.forEach(function(divItem) {
+    const items = document.querySelectorAll('#wrapper > div');
+    items.forEach(divItem => {
         divItem.addEventListener('mouseover', changeColor.defColor)
     });
 };
