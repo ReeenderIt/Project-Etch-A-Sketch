@@ -4,7 +4,7 @@ container.setAttribute('id', 'container');
 const button = document.createElement('button');
 button.textContent = 'Change Grid';
 button.classList.toggle('btn')
-const wrapper = document.getElementById('#wrapper');
+const wrapper = document.getElementById('wrapper');
 
 
 
