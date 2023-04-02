@@ -4,7 +4,7 @@ container.setAttribute('id', 'container');
 const button = document.createElement('button');
 button.textContent = 'Change Grid';
 button.classList.toggle('btn')
-const gridContainer = document.getElementById('grid-container');
+const gridContainer = document.getElementById('#wrapper');
 
 
 
@@ -27,9 +27,9 @@ const grid = {
     fillGrid: (gridCount, exeFunction) => {
         gridContainer.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
-            const gridItem = document.createElement('div');
+            const item = document.createElement('div');
             gridItem.classList.toggle('grid-item');
-            gridContainer.appendChild(gridItem);
+            gridContainer.appendChild(item);
         };    
         (exeFunction)();
     },
