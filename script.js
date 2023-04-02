@@ -4,13 +4,13 @@ container.setAttribute('id', 'container');
 const button = document.createElement('button');
 button.textContent = 'Change Grid';
 button.classList.toggle('btn')
-const gridContainer = document.getElementById('#wrapper');
+const wrapper = document.getElementById('#wrapper');
 
 
 
 body.prepend(container);
-container.appendChild(gridContainer);
-gridContainer.before(button);
+container.appendChild(wrapper);
+wrapper.before(button);
 
 
 
@@ -25,17 +25,17 @@ const changeColor = {
 const grid = {
     sizes: [1, 2, 4, 16, 32, 64],
     fillGrid: (gridCount, exeFunction) => {
-        gridContainer.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
+        wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
             const item = document.createElement('div');
             gridItem.classList.toggle('grid-item');
-            gridContainer.appendChild(item);
+            wrapper.appendChild(item);
         };    
         (exeFunction)();
     },
     clearGrid: () => {
-        while(gridContainer.hasChildNodes()) {
-            gridContainer.removeChild(gridContainer.firstChild);
+        while(wrapper.hasChildNodes()) {
+            wrapper.removeChild(wrapper.firstChild);
         };
     }
 };
