@@ -46,8 +46,7 @@ function getGridSize() {
 };
 
 function gridEvent() {
-    const items = document.querySelectorAll('#wrapper > div');
-    items.forEach(divItem => {
+    document.querySelectorAll('#wrapper > div').forEach(divItem => {
         divItem.addEventListener('mouseover', changeColor.defColor)
     });
 };
