@@ -54,20 +54,13 @@ function gridEvent() {
     });
 };
 
-function rndColor() {
-    const rnd = {
-        limit: {
-            min: 0,
-            max: 255
-        },
-        number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min
-    };
-    const rgb = {
-        red: rnd.number(),
-        green: rnd.number(),
-        blue: rnd.number()
-    };
-    return `rgb(${rgb.red}, ${rgb.green}, ${rgb.blue})`;
+const rnd = {
+    limit: {
+        min: 0,
+        max: 255
+    },
+    number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min,
+    clr: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`
 };
 
 function gridBox() {
