@@ -16,7 +16,7 @@ gridContainer.before(button);
 
 const changeColor = {
     defColor: (e) => {e.target.style.backgroundColor = "black"},
-
+    rainbowClr: (e) => {e.target.style.backgroundColor = rndColor()},
 };
 
 
@@ -54,17 +54,20 @@ function gridEvent() {
     });
 };
 
-function rainbowColor() {
-    const limit = {
-        max: 255,
-        min: 0
+function rndColor() {
+    const rnd = {
+        limit: {
+            min: 0,
+            max: 255
+        },
+        number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min
     };
-    const randomNumber = () => Math.floor(Math.random() * (limit.max - limit.min + 1)) + limit.min;
-    const color = {
-        red: randomNumber(),
-        green: randomNumber(),
-        blue: randomNumber()
-    }
+    const rgb = {
+        red: rnd.number(),
+        green: rnd.number(),
+        blue: rnd.number()
+    };
+    return `rgb(${rgb.red}, ${rgb.green}, ${rgb.blue})`;
 };
 
 function gridBox() {
