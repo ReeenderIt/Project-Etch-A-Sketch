@@ -3,6 +3,10 @@ optionsBtn.forEach(optionsBtn => optionsBtn.classList.toggle('btn'));
 optionsBtn[0].textContent = 'Rainbow';
 optionsBtn[1].textContent = 'Clear';
 
+const slider = document.getElementById('myRange');
+const sliderValue = document.getElementById('myRange').value;
+
+
 const canvasWrapper = document.querySelector('.canvas-wrapper');
 const wrapper = document.getElementById('wrapper');
 
@@ -17,7 +21,6 @@ const changeColor = {
 
 
 const grid = {
-    sizes: [1, 2, 4, 16, 32, 64],
     fillGrid: (gridCount, exeFunction) => {
         wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
@@ -41,7 +44,7 @@ function getGridSize() {
 
 function gridEvent() {
     document.querySelectorAll('#wrapper > div').forEach(divItem => {
-        divItem.addEventListener('mouseover', changeColor.defColor)
+        divItem.addEventListener('click', changeColor.defColor)
     });
 };
 
@@ -65,4 +68,5 @@ function gridBox() {
 
 
 // button.addEventListener('click', gridBox);
+slider.addEventListener('input', grid.fillGrid(sliderValue,gridEvent))
 // grid.fillGrid(grid.sizes[3], gridEvent);
