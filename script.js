@@ -1,16 +1,10 @@
-const body = document.querySelector('body');
-const container = document.createElement('div');
-container.setAttribute('id', 'container');
-const button = document.createElement('button');
-button.textContent = 'Change Grid';
-button.classList.toggle('btn')
+const optionsBtn = document.querySelectorAll('.options > button');
+optionsBtn.forEach(optionsBtn => optionsBtn.classList.toggle('btn'));
+optionsBtn[0].textContent = 'Rainbow';
+optionsBtn[1].textContent = 'Clear';
+
+const canvasWrapper = document.querySelector('.canvas-wrapper');
 const wrapper = document.getElementById('wrapper');
-
-
-
-body.prepend(container);
-container.appendChild(wrapper);
-wrapper.before(button);
 
 
 
@@ -70,5 +64,5 @@ function gridBox() {
 };
 
 
-button.addEventListener('click', gridBox);
-grid.fillGrid(grid.sizes[3], gridEvent);
+// button.addEventListener('click', gridBox);
+// grid.fillGrid(grid.sizes[3], gridEvent);
