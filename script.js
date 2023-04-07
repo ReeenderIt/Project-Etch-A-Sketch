@@ -4,7 +4,8 @@ optionsBtn[0].textContent = 'Rainbow';
 optionsBtn[1].textContent = 'Clear';
 
 const slider = document.getElementById('myRange');
-const sliderValue = document.getElementById('myRange').value;
+const sizeP = document.getElementById('size-p');
+sizeP.textContent = `${slider.value} x ${slider.value}`;
 
 
 const canvasWrapper = document.querySelector('.canvas-wrapper');
@@ -17,14 +18,12 @@ const changeColor = {
     rainbowClr: (e) => {e.target.style.backgroundColor = rndColor()},
 };
 
-
-
-
 const grid = {
     fillGrid: (gridCount, exeFunction) => {
         wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
             const item = document.createElement('div');
+            item.style.border = "1px solid black";
             wrapper.appendChild(item);
         };    
         (exeFunction)();
@@ -35,6 +34,7 @@ const grid = {
         };
     }
 };
+
 
 function getGridSize() {
      const gridSize = Math.round(parseInt(prompt('Enter grid size.', '')));
@@ -68,5 +68,10 @@ function gridBox() {
 
 
 // button.addEventListener('click', gridBox);
-slider.addEventListener('input', grid.fillGrid(sliderValue,gridEvent))
-// grid.fillGrid(grid.sizes[3], gridEvent);
+slider.oninput = function() {
+    grid.clearGrid();
+    grid.fillGrid(slider.value, gridEvent)
+    sizeP.textContent=`${slider.value} x ${slider.value}`;
+};
+
+grid.fillGrid(slider.value, gridEvent);
