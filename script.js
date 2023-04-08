@@ -13,9 +13,9 @@ const wrapper = document.getElementById('wrapper');
 
 
 
-const changeColor = {
-    defColor: (e) => {e.target.style.backgroundColor = "black"},
-    rainbowClr: (e) => {e.target.style.backgroundColor = rndColor()},
+const clr = {
+    default: (e) => {e.target.style.backgroundColor = "black"},
+    rainbow: (e) => {e.target.style.backgroundColor = rndColor()},
 };
 
 const grid = {
@@ -35,9 +35,9 @@ const grid = {
     }
 };
 
-function gridEvent() {
+function clrItem() {
     document.querySelectorAll('#wrapper > div').forEach(divItem => {
-        divItem.addEventListener('mouseover', changeColor.defColor)
+        divItem.addEventListener('mouseover', clr.default)
     });
 };
 
@@ -51,13 +51,13 @@ const rnd = {
 };
 
 
-grid.fillGrid(slider.value, gridEvent);
+grid.fillGrid(slider.value, clrItem);
 slider.oninput = () => {
     grid.clearGrid();
-    grid.fillGrid(slider.value, gridEvent)
+    grid.fillGrid(slider.value, clrItem)
     sizeP.textContent=`${slider.value} x ${slider.value}`;
 };
 clear.addEventListener('click', () => {
     grid.clearGrid();
-    grid.fillGrid(slider.value, gridEvent);
+    grid.fillGrid(slider.value, clrItem);
 });
