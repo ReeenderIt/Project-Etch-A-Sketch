@@ -1,7 +1,9 @@
 const optionsBtn = document.querySelectorAll('.options > button');
 optionsBtn.forEach(optionsBtn => optionsBtn.classList.toggle('btn'));
-optionsBtn[0].textContent = 'Rainbow';
-optionsBtn[1].textContent = 'Clear';
+const rainbow = document.getElementById('rainbow');
+const clear = document.getElementById('clear');
+rainbow.textContent = 'Rainbow';
+clear.textContent = 'Clear';
 
 const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
@@ -35,7 +37,7 @@ const grid = {
 
 function gridEvent() {
     document.querySelectorAll('#wrapper > div').forEach(divItem => {
-        divItem.addEventListener('click', changeColor.defColor)
+        divItem.addEventListener('mouseover', changeColor.defColor)
     });
 };
 
@@ -49,11 +51,13 @@ const rnd = {
 };
 
 
-// button.addEventListener('click', gridBox);
+grid.fillGrid(slider.value, gridEvent);
 slider.oninput = () => {
     grid.clearGrid();
     grid.fillGrid(slider.value, gridEvent)
     sizeP.textContent=`${slider.value} x ${slider.value}`;
 };
-
-grid.fillGrid(slider.value, gridEvent);
+clear.addEventListener('click', () => {
+    grid.clearGrid();
+    grid.fillGrid(slider.value, gridEvent);
+});
