@@ -7,8 +7,6 @@ const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
 sizeP.textContent = `${slider.value} x ${slider.value}`;
 
-
-const canvasWrapper = document.querySelector('.canvas-wrapper');
 const wrapper = document.getElementById('wrapper');
 
 
@@ -35,13 +33,6 @@ const grid = {
     }
 };
 
-
-function getGridSize() {
-     const gridSize = Math.round(parseInt(prompt('Enter grid size.', '')));
-     if (gridSize > 100) { return 100};
-     return gridSize;
-};
-
 function gridEvent() {
     document.querySelectorAll('#wrapper > div').forEach(divItem => {
         divItem.addEventListener('click', changeColor.defColor)
@@ -57,18 +48,9 @@ const rnd = {
     clr: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`
 };
 
-function gridBox() {
-    const size = getGridSize();    
-    if (isNaN(size)) {
-        return;
-    };
-    grid.clearGrid();
-    grid.fillGrid(size, gridEvent);
-};
-
 
 // button.addEventListener('click', gridBox);
-slider.oninput = function() {
+slider.oninput = () => {
     grid.clearGrid();
     grid.fillGrid(slider.value, gridEvent)
     sizeP.textContent=`${slider.value} x ${slider.value}`;
