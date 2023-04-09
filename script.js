@@ -53,7 +53,7 @@ function clrItem(color = clr.def) {
 
 
 
-rainbowBtn.addEventListener('click', clrItem(clr.rainbow));
+rainbowBtn.addEventListener('click', () => {clrItem(clr.rainbow)});
 clearBtn.addEventListener('click', () => {
     grid.clearGrid();
     grid.fillGrid(slider.value);
