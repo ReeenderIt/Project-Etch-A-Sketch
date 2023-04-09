@@ -28,12 +28,11 @@ const clr = {
 };
 
 const grid = {
+    item: () => document.createElement('div'),
     fillGrid: (gridCount) => {
         wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         for (let i = 1; i < gridCount**2+1; i++) {
-            const item = document.createElement('div');
-            item.style.border = "1px solid black";
-            wrapper.appendChild(item);
+            wrapper.appendChild(grid.item());
         };    
     },
     clearGrid: () => {
