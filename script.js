@@ -1,9 +1,9 @@
 const optionsBtn = document.querySelectorAll('.options > button');
 optionsBtn.forEach(optionsBtn => optionsBtn.classList.toggle('btn'));
-const rainbow = document.getElementById('rainbow');
-const clear = document.getElementById('clear');
-rainbow.textContent = 'Rainbow';
-clear.textContent = 'Clear';
+const rainbowBtn = document.getElementById('rainbow');
+const clearBtn = document.getElementById('clear');
+rainbowBtn.textContent = 'Rainbow';
+clearBtn.textContent = 'Clear';
 
 const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
@@ -13,9 +13,18 @@ const wrapper = document.getElementById('wrapper');
 
 
 
+const rnd = {
+    limit: {
+        min: 0,
+        max: 255
+    },
+    number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min,
+    RGB: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`
+};
+
 const clr = {
-    default: (e) => {e.target.style.backgroundColor = "black"},
-    rainbow: (e) => {e.target.style.backgroundColor = rndColor()},
+    def: (e) => {e.target.style.backgroundColor = "black";},
+    rainbow: (e) => {e.target.style.backgroundColor = rnd.RGB();},
 };
 
 const grid = {
@@ -35,29 +44,26 @@ const grid = {
     }
 };
 
-function clrItem() {
+function clrItem(color = clr.def) {
     document.querySelectorAll('#wrapper > div').forEach(divItem => {
-        divItem.addEventListener('mouseover', clr.default)
+        divItem.addEventListener('mouseover', color)
     });
-};
-
-const rnd = {
-    limit: {
-        min: 0,
-        max: 255
-    },
-    number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min,
-    clr: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`
+    console.log(color);
 };
 
 
-grid.fillGrid(slider.value, clrItem);
-slider.oninput = () => {
+
+rainbowBtn.addEventListener('click', clrItem(clr.rainbow));
+clearBtn.addEventListener('click', () => {
     grid.clearGrid();
-    grid.fillGrid(slider.value, clrItem)
-    sizeP.textContent=`${slider.value} x ${slider.value}`;
-};
-clear.addEventListener('click', () => {
-    grid.clearGrid();
-    grid.fillGrid(slider.value, clrItem);
+    grid.fillGrid(slider.value);
+    clrItem()
 });
+slider.oninput = () => {
+    sizeP.textContent=`${slider.value} x ${slider.value}`;
+    grid.clearGrid();
+    grid.fillGrid(slider.value)
+    clrItem();
+};
+grid.fillGrid(slider.value)
+clrItem();
