@@ -29,7 +29,7 @@ const clr = {
 
 const grid = {
     item: () => document.createElement('div'),
-    fillGrid: (gridCount) => {
+    newGrid: (gridCount) => {
         wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
         while(wrapper.hasChildNodes()) {
             wrapper.removeChild(wrapper.firstChild);
@@ -40,11 +40,6 @@ const grid = {
             wrapper.appendChild(test);
         };    
     },
-    // clearGrid: () => {
-        // while(wrapper.hasChildNodes()) {
-            // wrapper.removeChild(wrapper.firstChild);
-        // };
-    // }
 };
 
 function clrItem(color = clr.def) {
@@ -58,15 +53,13 @@ function clrItem(color = clr.def) {
 
 rainbowBtn.addEventListener('click', () => {clrItem(clr.rainbow)});
 clearBtn.addEventListener('click', () => {
-    // grid.clearGrid();
-    grid.fillGrid(slider.value);
+    grid.newGrid(slider.value);
     clrItem()
 });
 slider.oninput = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
-    // grid.clearGrid();
-    grid.fillGrid(slider.value)
+    grid.newGrid(slider.value)
     clrItem();
 };
-grid.fillGrid(slider.value)
+grid.newGrid(slider.value)
 clrItem();
