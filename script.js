@@ -53,7 +53,8 @@ const grid = {
 
 function clrItem(color = clr.def) {
     document.querySelectorAll('#wrapper > div').forEach(divItem => {
-        divItem.addEventListener('mouseover', color)
+        divItem.removeEventListener('mouseover', color);
+        divItem.addEventListener('mouseover', color);
     });
     console.log(color);
 };
