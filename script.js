@@ -60,6 +60,7 @@ function clrItem(color = clr.def) {
 
 clrButton1.addEventListener('click', () => clrItem(clr.option1));
 clrButton2.addEventListener('click', () => clrItem(clr.option2));
+clrButton3.addEventListener('click', () => clrItem(clr.option3));
 eraser.addEventListener('click', () => clrItem(clr.eraser));
 rainbowBtn.addEventListener('click', () => {clrItem(clr.rainbow)});
 clearBtn.addEventListener('click', () => {
