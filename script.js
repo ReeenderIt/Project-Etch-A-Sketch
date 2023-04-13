@@ -1,3 +1,4 @@
+const eraser = document.getElementById('eraser');
 const clrButton1 = document.getElementById('color1');
 const clrButton2 = document.getElementById('color2');
 const clrButton3 = document.getElementById('color3');
@@ -32,6 +33,7 @@ const clr = {
     option1: (e) => {e.target.style.backgroundColor = document.getElementById('color1').value},
     option2: (e) => {e.target.style.backgroundColor = document.getElementById('color2').value},
     option3: (e) => {e.target.style.backgroundColor = document.getElementById('color3').value},
+    eraser: (e) => {e.target.style.backgroundColor = "#FFFFFF"},
 };
 
 const grid = {
