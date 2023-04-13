@@ -1,4 +1,6 @@
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -73,9 +75,42 @@ footer {
     background-color: blueviolet;
 }
 
-/* .palette-wrapper { */
-/*  */
-/* } */
+.palette-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.palette {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 3em 4em 0em;
+    gap: 1.5em;
+}
+
+.color-container {
+    position: relative;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border: solid 2px #ddd;
+    border-radius: 40px;
+}
+
+.colors {
+    appearance: none;
+    border: none;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+}
+
+.erase-btn {
+    background-color: #FFFFFF;
+}
 
 .canvas-wrapper {
     width: max-content;
@@ -99,7 +134,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2em;
+    padding: 4em;
     gap: 3em;
 }
 
