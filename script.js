@@ -56,7 +56,6 @@ function clrItem(color = clr.def) {
         divItem.removeEventListener('mouseover', color);
         divItem.addEventListener('mouseover', color);
     });
-    console.log(color);
 };
 
 clrButton1.addEventListener('click', () => clrItem(clr.option1));
