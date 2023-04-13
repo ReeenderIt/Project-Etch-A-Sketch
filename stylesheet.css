@@ -110,6 +110,7 @@ footer {
 
 .erase-btn {
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 
 .canvas-wrapper {
