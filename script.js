@@ -1,3 +1,7 @@
+const clrButton1 = document.getElementById('color1');
+const clrButton2 = document.getElementById('color2');
+const clrButton3 = document.getElementById('color3');
+
 const optionsBtn = document.querySelectorAll('.options > button');
 optionsBtn.forEach(optionsBtn => optionsBtn.classList.toggle('btn'));
 const rainbowBtn = document.getElementById('rainbow');
@@ -25,6 +29,9 @@ const rnd = {
 const clr = {
     def: (e) => {e.target.style.backgroundColor = "black";},
     rainbow: (e) => {e.target.style.backgroundColor = rnd.RGB();},
+    option1: (e) => {e.target.style.backgroundColor = document.getElementById('color1').value},
+    option2: (e) => {e.target.style.backgroundColor = document.getElementById('color2').value},
+    option3: (e) => {e.target.style.backgroundColor = document.getElementById('color3').value},
 };
 
 const grid = {
@@ -49,8 +56,9 @@ function clrItem(color = clr.def) {
     console.log(color);
 };
 
-
-
+clrButton1.addEventListener('click', () => clrItem(clr.option1));
+clrButton2.addEventListener('click', () => clrItem(clr.option2));
+eraser.addEventListener('click', () => clrItem(clr.eraser));
 rainbowBtn.addEventListener('click', () => {clrItem(clr.rainbow)});
 clearBtn.addEventListener('click', () => {
     grid.newGrid(slider.value);
