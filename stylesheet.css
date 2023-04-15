@@ -20,7 +20,35 @@ div {
     margin: 1em 0 0;
 }
 
-.btn {
+.options button {
+    background-color: #ebebeb;
+    font-size: 1.4rem;
+    display: block;
+    min-width: 10rem;
+    min-height: 2.7rem;
+    border-radius: 7px;
+    border: 1px solid black;
+    font-family: inherit;
+}
+
+.option {
+    transition: transform .2s ease;
+}
+
+.option:hover {
+    transform: scale(1.03);
+}
+
+.color-container:hover {
+    transform: scale(1.06);
+}
+
+.option:active {
+    transform: scale(1);
+}
+
+
+/* .btn {
     background-color: #ebebeb;
     font-size: 1.4rem;
     display: block;
@@ -39,7 +67,7 @@ div {
 
 .btn:active {
     transform: scale(1);
-}
+} */
 
 .body-layout {
     display: grid;
