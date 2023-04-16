@@ -47,28 +47,6 @@ div {
     transform: scale(1);
 }
 
-
-/* .btn {
-    background-color: #ebebeb;
-    font-size: 1.4rem;
-    display: block;
-    min-width: 10rem;
-    min-height: 2.7rem;
-    border-radius: 7px;
-    border: 1px solid black;
-    font-family: inherit;
-    transition: transform .2s ease;
-}
-
-.btn:hover {
-    transform: scale(1.03);
-    background-color: #d6d6d6;
-}
-
-.btn:active {
-    transform: scale(1);
-} */
-
 .body-layout {
     display: grid;
     grid-auto-columns: auto;
