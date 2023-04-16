@@ -43,9 +43,9 @@ const grid = {
             wrapper.removeChild(wrapper.firstChild);
         };
         for (let i = 1; i < gridCount**2+1; i++) {
-            const test = grid.item();
-            test.style.border = "1px solid black";
-            wrapper.appendChild(test);
+            // const test = grid.item();
+            // test.style.border = "1px solid black";
+            wrapper.appendChild(grid.item());
         };    
     },
 };
