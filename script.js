@@ -65,7 +65,6 @@ eraser.addEventListener('click', () => clrItem(clr.eraser));
 rainbowBtn.addEventListener('click', () => {clrItem(clr.rainbow)});
 clearBtn.addEventListener('click', () => {
     grid.newGrid(slider.value);
-    clrItem()
 });
 slider.oninput = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
