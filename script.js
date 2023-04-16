@@ -1,4 +1,5 @@
 const eraser = document.getElementById('eraser');
+eraser.textContent = 'Eraser';
 const clrButton1 = document.getElementById('color1');
 const clrButton2 = document.getElementById('color2');
 const clrButton3 = document.getElementById('color3');

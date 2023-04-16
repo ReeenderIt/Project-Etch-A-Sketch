@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body, p {
+body, p, button{
     margin: 0;
     font-family: 'Cedarville Cursive', cursive;
     background-color: #f8f8f8;
@@ -28,7 +28,6 @@ div {
     min-height: 2.7rem;
     border-radius: 7px;
     border: 1px solid black;
-    font-family: inherit;
 }
 
 .option {
