@@ -13,7 +13,6 @@ const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
 sizeP.textContent = `${slider.value} x ${slider.value}`;
 
-const wrapper = document.getElementById('wrapper');
 
 
 
@@ -36,6 +35,7 @@ const clr = {
 };
 
 const grid = {
+    wrapper: () => document.getElementById('wrapper'),
     item: () => document.createElement('div'),
     newGrid: (gridCount) => {
         wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
