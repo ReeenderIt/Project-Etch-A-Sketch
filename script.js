@@ -50,23 +50,34 @@ const grid = {
     },
 };
 
-function clrItem(color = clr.def) {
-    document.querySelectorAll('#wrapper > div').forEach(divItem => {
-        divItem.removeEventListener('mouseover', color);
-        divItem.addEventListener('mouseover', color);
-    });
+const clrItem = {
+    clickClr: (color = clr.def) => {
+        document.querySelectorAll('#wrapper > div').forEach(divItem => {
+            divItem.removeEventListener('mouseover', clr.rainbow);
+            divItem.removeEventListener('click', color);
+            divItem.addEventListener('click', color);
+        });
+    },
+    hoverClr: (color = clr.def) => {
+        document.querySelectorAll('#wrapper > div').forEach(divItem => {
+            divItem.removeEventListener('click', color);
+            divItem.removeEventListener('mouseover', clr.rainbow);
+            divItem.addEventListener('mouseover', color);
+        });
+
+    }
 };
 
-clrButton1.addEventListener('click', () => clrItem(clr.option1));
-clrButton2.addEventListener('click', () => clrItem(clr.option2));
-clrButton3.addEventListener('click', () => clrItem(clr.option3));
-eraser.addEventListener('click', () => clrItem(clr.eraser));
-rainbowBtn.addEventListener('click', () => clrItem(clr.rainbow));
+clrButton1.addEventListener('click', () => clrItem.clickClr(clr.option1));
+clrButton2.addEventListener('click', () => clrItem.clickClr(clr.option2));
+clrButton3.addEventListener('click', () => clrItem.clickClr(clr.option3));
+eraser.addEventListener('click', () => clrItem.clickClr(clr.eraser));
+rainbowBtn.addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
 clearBtn.addEventListener('click', () => grid.newGrid(slider.value));
 slider.oninput = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
     grid.newGrid(slider.value)
-    clrItem();
+    clrItem.clickClr();
 };
 grid.newGrid(slider.value)
-clrItem();
+clrItem.clickClr();
