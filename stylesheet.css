@@ -139,8 +139,6 @@ footer {
 #wrapper {
     width: 510px;
     height: 510px;
-    margin: auto;
-    box-shadow: 1px 1px 3px 0px black;
     flex-wrap: wrap;
     background-color: #FFFFFF;
 }
