@@ -89,6 +89,9 @@ clrButton3.addEventListener('click', () => clrItem.clickClr(clr.option3));
 eraser.addEventListener('click', () => clrItem.clickClr(clr.eraser));
 rainbowBtn.addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
 clearBtn.addEventListener('click', () => grid.newGrid(slider.value));
+slider.oninput = () => {
+    sizeP.textContent=`${slider.value} x ${slider.value}`;
+};
 slider.onchange = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
     grid.newGrid(slider.value)
