@@ -36,18 +36,33 @@ const clr = {
 
 const grid = {
     wrapper: () => document.getElementById('wrapper'),
+    wrapperWidth: () => wrapper.offsetWidth,
     item: () => document.createElement('div'),
-    newGrid: (gridCount) => {
-        wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
-        while(wrapper.hasChildNodes()) {
-            wrapper.removeChild(wrapper.firstChild);
-        };
-        for (let i = 1; i < gridCount**2+1; i++) {
-            // const test = grid.item();
-            // test.style.border = "1px solid black";
-            wrapper.appendChild(grid.item());
-        };    
-    },
+    newGrid:
+            // Use gridFill to create new grid faster than flexFill
+        // (gridCount) => {
+            // wrapper.style.display = 'grid';
+            // wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
+            // while(wrapper.hasChildNodes()) {
+                // wrapper.removeChild(wrapper.firstChild);
+            // };
+            // for (let i = 1; i < gridCount**2+1; i++) {
+                // wrapper.appendChild(grid.item());
+            // };    
+        // }
+
+        (gridSize) => {
+            wrapper.style.display = 'flex';
+            const itemWidth = grid.wrapperWidth()/gridSize + `px`;
+            while(wrapper.hasChildNodes()) {
+                wrapper.removeChild(wrapper.firstChild);
+            };
+            for (let i = 1; i < gridSize**2+1; i++) {
+                const test = grid.item();
+                test.style.flexBasis = itemWidth;
+                wrapper.appendChild(test);
+            };
+        }
 };
 
 const clrItem = {

@@ -126,14 +126,27 @@ footer {
     width: max-content;
 }
 
+/* #wrapper { */
+    /* width: 510px; */
+    /* height: 510px; */
+    /* margin: auto; */
+    /* box-shadow: 1px 1px 3px 0px black; */
+    /* display: grid; */
+    /* overflow: hidden; */
+    /* background-color: #FFFFFF; */
+/* } */
+
 #wrapper {
     width: 510px;
     height: 510px;
     margin: auto;
     box-shadow: 1px 1px 3px 0px black;
-    display: grid;
-    overflow: hidden;
+    flex-wrap: wrap;
     background-color: #FFFFFF;
+}
+
+#wrapper > * {
+    border: solid 1px black;    
 }
 
 .option-wrapper {
