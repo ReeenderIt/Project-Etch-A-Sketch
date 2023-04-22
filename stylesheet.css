@@ -29,7 +29,8 @@ div {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    box-shadow: 1px 1px 3px 0px black;
+    border: solid 1px black;
+    box-shadow: 0px 3px 1px 0px black;
 }
 
 .rh-buttons button {
@@ -72,10 +73,8 @@ header {
 .slide-wrapper {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     transform: rotate(90deg);
     width: 20rem;
-    /* height: 0rem; */
     position: relative;
     top: -2rem;
     left: -2rem;
@@ -112,7 +111,8 @@ footer {
     width: 100px;
     height: 45px;
     border-radius: 40px;
-    box-shadow: 1px 1px 3px 0px black;
+    border: solid 1px black;
+    box-shadow: 0px 3px 1px 0px black;
 }
 
 .colors {
@@ -146,6 +146,7 @@ footer {
 /* } */
 
 .sketch-background {
+    /* border: solid 2px #00000033; */
     border: solid 2px black;
     border-radius: 15px 15px 85px 15px;
     background-color: #c5c0c7;
@@ -188,6 +189,7 @@ footer {
     width: 250px;
     height: 5px;
     background: #cacaca;
+    border: solid 1px black;
 }
 
 .slider::-webkit-slider-thumb {
