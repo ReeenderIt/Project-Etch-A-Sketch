@@ -22,35 +22,6 @@ div {
     margin: 1em 0 0;
 }
 
-.rh-options button {
-    background-color: #c4276e;
-    font-size: 1.4rem;
-    display: block;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    border: solid 1px black;
-    box-shadow: 0px 3px 1px 0px black;
-}
-
-.rh-buttons button {
-    transition: transform .2s ease;
-}
-
-.rh-buttons button:hover {
-    transform: scale(1.03);
-    border: solid 1.5px black;
-}
-
-.color-container:hover {
-    transform: scale(1.06);
-    border: solid 1.5px black;
-}
-
-.rh-buttons button:active {
-    transform: scale(1);
-}
-
 .body-layout {
     display: grid;
     grid-auto-columns: auto;
@@ -70,28 +41,6 @@ header {
     margin: 1em 0 0;
 }
 
-.slide-wrapper {
-    display: flex;
-    align-items: center;
-    transform: rotate(90deg);
-    width: 20rem;
-    position: relative;
-    top: -2rem;
-    left: -2rem;
-    /* grid-area: 3 / 1 / 4 / 2; */
-}
-
-.rh-buttons, .rh-labels {
-    display: flex;
-    justify-content: space-around;
-}
-
-footer {
-    margin: 3em 0 0;
-    grid-area: 4 / 1 / 5 / 2;
-    background-color: blueviolet;
-}
-
 .palette-wrapper {
     display: flex;
     align-items: center;
@@ -103,6 +52,11 @@ footer {
     align-items: flex-end;
     padding: 3em 4em 0em;
     gap: 1.5em;
+}
+
+.color-container:hover {
+    transform: scale(1.06);
+    border: solid 1.5px black;
 }
 
 .color-container {
@@ -172,16 +126,15 @@ footer {
     /* align-items: center; */
 }
 
-.rh-options {
-    width: 12rem;
+.slide-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1em;
+    align-items: center;
+    transform: rotate(90deg);
+    width: 20rem;
     position: relative;
-    top: 10rem;
-    left: 4rem;
-    transform: rotate(327deg);
+    top: -2rem;
+    left: -2rem;
+    /* grid-area: 3 / 1 / 4 / 2; */
 }
 
 .slider {
@@ -204,4 +157,51 @@ footer {
 
 .size {
     transform: rotate(-90deg);
+}
+
+.rh-options {
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+    position: relative;
+    top: 10rem;
+    left: 4rem;
+    transform: rotate(327deg);
+}
+
+.rh-buttons, .rh-labels {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rh-options button {
+    background-color: #c4276e;
+    font-size: 1.4rem;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: solid 1px black;
+    box-shadow: 0px 3px 1px 0px black;
+}
+
+.rh-buttons button {
+    transition: transform .2s ease;
+}
+
+.rh-buttons button:hover {
+    transform: scale(1.03);
+    border: solid 1.5px black;
+}
+
+.rh-buttons button:active {
+    transform: scale(1);
+}
+
+footer {
+    margin: 3em 0 0;
+    grid-area: 4 / 1 / 5 / 2;
+    background-color: blueviolet;
 }
