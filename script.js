@@ -6,8 +6,8 @@ const clrButton3 = document.getElementById('color3');
 
 const rainbowBtn = document.getElementById('rainbow');
 const clearBtn = document.getElementById('clear');
-rainbowBtn.textContent = 'Rainbow';
-clearBtn.textContent = 'Clear';
+// rainbowBtn.textContent = 'Rainbow';
+// clearBtn.textContent = 'Clear';
 
 const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');

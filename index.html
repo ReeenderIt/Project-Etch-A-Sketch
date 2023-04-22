@@ -15,36 +15,42 @@
             <p class="title">Pixel-Art</p>
         </header>
         <div class="main">
-            <div class="palette-wrapper">
-                <div class="palette">
-                    <label for="color1" class="color-container option">
-                        <input type="color" id="color1" class="colors" name="color1" value="#000000">
-                    </label>
-                    <label for="color2" class="color-container option">
-                        <input type="color" id="color2" class="colors" name="color2" value="#cfd21e">
-                    </label>
-                    <label for="color3" class="color-container option">
-                        <input type="color" id="color3" class="colors" name="color3" value="#91c3f7">
-                    </label>
-                    <button id="eraser" class="color-container erase-btn option"></button>
-                    <p id="color1-label" class="color-labels"></p>
+                <div class="palette-wrapper">
+                    <div class="palette">
+                        <label for="color1" class="color-container option">
+                            <input type="color" id="color1" class="colors" name="color1" value="#000000">
+                        </label>
+                        <label for="color2" class="color-container option">
+                            <input type="color" id="color2" class="colors" name="color2" value="#cfd21e">
+                        </label>
+                        <label for="color3" class="color-container option">
+                            <input type="color" id="color3" class="colors" name="color3" value="#91c3f7">
+                        </label>
+                        <button id="eraser" class="color-container erase-btn option"></button>
+                        <p id="color1-label" class="color-labels"></p>
+                    </div>
                 </div>
-            </div>
             <div class="canvas-wrapper">
                 <div class="sketch-background">
                     <div id="wrapper"></div>
                 </div>
             </div>
-            <div class="option-wrapper">
-                <div class="options">
-                    <button class="rainbow-btn option" id="rainbow"></button>
-                    <button class="clear-btn option" id="clear"></button>
+            <div class="right-hand-wrapper">
+                <div class="slide-wrapper">
+                    <input type="range" min="1" max="72" value="16" class="slider" id="myRange" orient="vertical">
+                    <p id="size-p" class="size">Size</p>
+                </div>
+                <div class="rh-options">
+                    <div class="rh-buttons">
+                        <button class="rainbow-btn option" id="rainbow"></button>
+                        <button class="clear-btn option" id="clear"></button>    
+                    </div>
+                    <div class="rh-labels">
+                        <p>Rainbow</p>
+                        <p>Clear</p>    
+                    </div>
                 </div>
             </div>    
-        </div>
-        <div class="slide-wrapper">
-            <p id="size-p">Size</p>
-            <input type="range" min="1" max="72" value="16" class="slider" id="myRange">
         </div>
     </body>
 </html>

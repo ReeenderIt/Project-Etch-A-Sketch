@@ -22,21 +22,21 @@ div {
     margin: 1em 0 0;
 }
 
-.options button {
-    background-color: #ebebeb;
+.rh-options button {
+    background-color: #c4276e;
     font-size: 1.4rem;
     display: block;
-    min-width: 10rem;
-    min-height: 2.7rem;
-    border-radius: 7px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
     box-shadow: 1px 1px 3px 0px black;
 }
 
-.option {
+.rh-buttons button {
     transition: transform .2s ease;
 }
 
-.option:hover {
+.rh-buttons button:hover {
     transform: scale(1.03);
     border: solid 1.5px black;
 }
@@ -46,7 +46,7 @@ div {
     border: solid 1.5px black;
 }
 
-.option:active {
+.rh-buttons button:active {
     transform: scale(1);
 }
 
@@ -71,11 +71,20 @@ header {
 
 .slide-wrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 25px;
-    margin: 1.7em 0 0;
-    grid-area: 3 / 1 / 4 / 2;
+    /* justify-content: space-between; */
+    transform: rotate(90deg);
+    width: 20rem;
+    /* height: 0rem; */
+    position: relative;
+    top: -2rem;
+    left: -2rem;
+    /* grid-area: 3 / 1 / 4 / 2; */
+}
+
+.rh-buttons, .rh-labels {
+    display: flex;
+    justify-content: space-around;
 }
 
 footer {
@@ -152,28 +161,33 @@ footer {
 }
 
 #wrapper > * {
-    border: solid 1px rgba(170, 170, 170, 0.238);    
+    border: solid 1px rgba(170, 170, 170, 0.238);
 }
 
-.option-wrapper {
+.right-hand-wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
 }
 
-.options {
+.rh-options {
+    width: 12rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 4em;
-    gap: 3em;
+    gap: 1em;
+    position: relative;
+    top: 10rem;
+    left: 4rem;
+    transform: rotate(327deg);
 }
 
 .slider {
     appearance: none;
-    min-width: 20%;
+    width: 250px;
     height: 5px;
     background: #cacaca;
-    border-radius: 40%; 
 }
 
 .slider::-webkit-slider-thumb {
@@ -186,3 +200,6 @@ footer {
     cursor: pointer;
 }
 
+.size {
+    transform: rotate(-90deg);
+}
