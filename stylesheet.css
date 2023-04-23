@@ -38,7 +38,7 @@ main {
     margin: 1em 0 0;
 }
 
-.palette-wrapper {
+.left-main-wrapper {
     display: flex;
     align-items: center;
 }
@@ -88,7 +88,7 @@ main {
     cursor: pointer;
 }
 
-.canvas-wrapper {
+.middle-main-wrapper {
     width: max-content;
 }
 
@@ -112,7 +112,7 @@ main {
     border: solid 1px rgba(170, 170, 170, 0.238);
 }
 
-.right-hand-wrapper {
+.right-main-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,7 +150,7 @@ main {
     transform: rotate(-90deg);
 }
 
-.rh-options {
+.btn-group {
     width: 12rem;
     display: flex;
     flex-direction: column;
@@ -162,12 +162,12 @@ main {
     transform: rotate(327deg);
 }
 
-.rh-buttons, .rh-labels {
+.btns, .btn-labels {
     display: flex;
     justify-content: space-around;
 }
 
-.rh-options button {
+.btns button {
     background-color: #c4276e;
     font-size: 1.4rem;
     display: block;
@@ -178,16 +178,16 @@ main {
     box-shadow: -2px 4px 0px 0px black;
 }
 
-.rh-buttons button {
+.btns button {
     transition: transform ease-in;
 }
 
-.rh-buttons button:hover {
+.btns button:hover {
     transform: scale(1.1, 1.1);
     border: solid 1px #bcbcbc;
 }
 
-.rh-buttons button:active {
+.btns button:active {
     /* transform: scale(1); */
     transform: translate(-3px,6px) scale(1, 1);
     border: solid 1px black;
