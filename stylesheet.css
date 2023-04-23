@@ -5,16 +5,13 @@
 }
 
 body, p, button{
-    margin: 0;
     font-family: 'VT323', monospace;
     background-color: #ffffff;
     font-size: 1.4rem;
-    border: none;
 }
 
 div {
     width: 100%;
-    display: block;
 }
 
 .title {
@@ -22,7 +19,7 @@ div {
     margin: 1em 0 0;
 }
 
-.body-layout {
+body {
     display: grid;
     grid-auto-columns: auto;
     grid-auto-rows: auto;
@@ -89,16 +86,6 @@ header {
     width: max-content;
 }
 
-/* #wrapper { */
-    /* width: 510px; */
-    /* height: 510px; */
-    /* margin: auto; */
-    /* box-shadow: 1px 1px 3px 0px black; */
-    /* display: grid; */
-    /* overflow: hidden; */
-    /* background-color: #FFFFFF; */
-/* } */
-
 .sketch-background {
     /* border: solid 2px #00000033; */
     border: solid 2px black;
@@ -123,7 +110,6 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
 }
 
 .slide-wrapper {
@@ -134,7 +120,6 @@ header {
     position: relative;
     top: -2rem;
     left: -2rem;
-    /* grid-area: 3 / 1 / 4 / 2; */
 }
 
 .slider {
