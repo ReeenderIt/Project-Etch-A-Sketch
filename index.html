@@ -11,12 +11,12 @@
         <title>Etch-A-Sketch</title>
     </head>
     <body class="body-layout">
-        <header class="title-wrapper">
+        <header class="title-wrapper flex">
             <p class="title">Pixel-Art</p>
         </header>
-        <main class="main">
-            <div class="left-main-wrapper">
-                <div class="palette">
+        <main class="main flex">
+            <div class="left-main-wrapper flex">
+                <div class="palette flex">
                     <label for="color1" class="color-container">
                         <input type="color" id="color1" class="colors" name="color1" value="#000000">
                     </label>
@@ -35,17 +35,17 @@
                     <div id="wrapper"></div>
                 </div>
             </div>
-            <div class="right-main-wrapper">
-                <div class="slide-wrapper">
+            <div class="right-main-wrapper flex">
+                <div class="slide-wrapper flex">
                     <input type="range" min="1" max="72" value="16" class="slider" id="myRange" orient="vertical">
                     <p id="size-p" class="size">Size</p>
                 </div>
-                <div class="btn-group">
-                    <div class="btns">
+                <div class="btn-group flex">
+                    <div class="btns flex">
                         <button class="rainbow-btn" id="rainbow"></button>
                         <button class="clear-btn" id="clear"></button>    
                     </div>
-                    <div class="btn-labels">
+                    <div class="btn-labels flex">
                         <p>Rainbow</p>
                         <p>Clear</p>    
                     </div>

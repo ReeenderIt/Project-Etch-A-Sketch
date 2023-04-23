@@ -25,26 +25,26 @@ body {
     grid-auto-rows: auto;
 }
 
+.flex {
+    display: flex;
+}
+
 header {
     grid-area: 1 / 1 / 2 / 2;
-    display: flex;
     margin: auto;
 }
 
 main {
     grid-area: 2 / 1 / 3 / 2;
-    display: flex;
     justify-content: center;
     margin: 1em 0 0;
 }
 
 .left-main-wrapper {
-    display: flex;
     align-items: center;
 }
 
 .palette {
-    display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding: 3em 4em 0em;
@@ -113,13 +113,11 @@ main {
 }
 
 .right-main-wrapper {
-    display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .slide-wrapper {
-    display: flex;
     align-items: center;
     transform: rotate(90deg);
     width: 20rem;
@@ -152,7 +150,6 @@ main {
 
 .btn-group {
     width: 12rem;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1em;
@@ -163,7 +160,6 @@ main {
 }
 
 .btns, .btn-labels {
-    display: flex;
     justify-content: space-around;
 }
 
