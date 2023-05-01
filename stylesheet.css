@@ -10,6 +10,12 @@ body, p, button{
     font-size: 1.4rem;
 }
 
+button { 
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 li {
     list-style: none;
 }
@@ -242,6 +248,38 @@ footer {
     width: 652px;
 }
 
-.menu-ul li{
-    line-height: 40px;
+menu {
+    flex-direction: column;
+}
+
+menu > div {
+    margin: .2em 0;
+}
+
+.menu_labels, .menu_carousel {
+    flex: 50%;
+}
+
+.carousel_opt {
+    height: max-content;
+    flex-direction: column;
+}
+
+.carousel_btn {
+    height: max-content;
+}
+
+.carousel_track-container {
+    width: 8em;
+    text-align: center;
+}
+
+.carousel_track {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel_slide {
+    position: absolute;
+    width: 100%;
 }
