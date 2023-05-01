@@ -39,6 +39,10 @@ body {
     display: flex;
 }
 
+.hide-display {
+    display: none;
+}
+
 header {
     grid-area: 1 / 1 / 2 / 2;
     margin: auto;

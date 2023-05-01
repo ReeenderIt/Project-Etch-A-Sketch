@@ -13,6 +13,8 @@ const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
 sizeP.textContent = `${slider.value} x ${slider.value}`;
 
+const selectBtn = document.getElementById('select')
+const footerDisplay = document.getElementById('footer-display');
 
 
 
@@ -83,6 +85,10 @@ const clrItem = {
     }
 };
 
+const removeDisplay = () => {
+    footerDisplay.classList.toggle('hide-display');
+}
+
 clrButton1.addEventListener('click', () => clrItem.clickClr(clr.option1));
 clrButton2.addEventListener('click', () => clrItem.clickClr(clr.option2));
 clrButton3.addEventListener('click', () => clrItem.clickClr(clr.option3));
@@ -97,5 +103,7 @@ slider.onchange = () => {
     grid.newGrid(slider.value)
     clrItem.clickClr();
 };
+selectBtn.addEventListener('click', removeDisplay);
+
 grid.newGrid(slider.value)
 clrItem.clickClr();
