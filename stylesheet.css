@@ -269,10 +269,6 @@ menu > div {
     flex-direction: column;
 }
 
-.carousel_btn {
-    height: max-content;
-}
-
 .carousel_track-container {
     width: 8em;
     text-align: center;
@@ -285,5 +281,5 @@ menu > div {
 
 .carousel_slide {
     position: absolute;
-    width: 100%;
+    width: fit-content;
 }

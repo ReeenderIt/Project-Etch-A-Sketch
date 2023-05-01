@@ -16,6 +16,18 @@ sizeP.textContent = `${slider.value} x ${slider.value}`;
 const selectBtn = document.getElementById('select')
 const footerDisplay = document.getElementById('footer-display');
 
+const bgLeftBtn = document.getElementById('bg-clr--lft-btn');
+const bgRightBtn = document.getElementById('bg-clr--rght-btn');
+const currentSetting = document.querySelector('.current-setting');
+
+const selectSetting = () => {
+    removeDisplay(currentSetting);
+    currentSetting.nextElementSibling.classList.toggle('current-setting')
+    removeDisplay(currentSetting.nextElementSibling)
+    currentSetting.classList.toggle('current-setting')
+}
+
+
 
 
 const rnd = {
@@ -85,8 +97,8 @@ const clrItem = {
     }
 };
 
-const removeDisplay = () => {
-    footerDisplay.classList.toggle('hide-display');
+const removeDisplay = (object) => {
+    object.classList.toggle('hide-display');
 }
 
 clrButton1.addEventListener('click', () => clrItem.clickClr(clr.option1));
@@ -103,7 +115,10 @@ slider.onchange = () => {
     grid.newGrid(slider.value)
     clrItem.clickClr();
 };
-selectBtn.addEventListener('click', removeDisplay);
+selectBtn.addEventListener('click', () => {removeDisplay(footerDisplay)});
+bgLeftBtn.addEventListener('click', selectSetting);
+bgRightBtn.addEventListener('click', selectSetting);    
+
 
 grid.newGrid(slider.value)
 clrItem.clickClr();
