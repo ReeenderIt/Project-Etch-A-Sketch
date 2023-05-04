@@ -18,14 +18,7 @@ const footerDisplay = document.getElementById('footer-display');
 
 const bgLeftBtn = document.getElementById('bg-clr--lft-btn');
 const bgRightBtn = document.getElementById('bg-clr--rght-btn');
-const currentSetting = document.querySelector('.current-setting');
 
-const selectSetting = () => {
-    removeDisplay(currentSetting);
-    currentSetting.nextElementSibling.classList.toggle('current-setting')
-    removeDisplay(currentSetting.nextElementSibling)
-    currentSetting.classList.toggle('current-setting')
-}
 
 
 
@@ -97,8 +90,40 @@ const clrItem = {
     }
 };
 
-const removeDisplay = (object) => {
+const toggleDisplay = (object) => {
     object.classList.toggle('hide-display');
+}
+
+const menuSettings = {
+    selBG: ()=>document.getElementById('bg-clr-label'),
+    bgClr: {
+        selIndex: 0,
+        clrOps: {
+            'Default': '#a4c266',
+            White: '#FFFFFF',
+            Black: '#000000',        
+        }
+    },
+    selSetting: function(op) {
+        const options = Object.keys(menuSettings.bgClr.clrOps);
+
+        if(op === 'decrement') {
+            this.bgClr.selIndex -= 1;
+            console.log(this.bgClr.selIndex);
+            let currentSetting = options[this.bgClr.selIndex];
+            this.selBG().textContent = currentSetting;
+            grid.wrapper().style.backgroundColor = this.bgClr.clrOps[currentSetting];
+        };    
+        
+        if(op === 'increment') {
+            this.bgClr.selIndex += 1;
+            console.log(this.bgClr.selIndex);
+            let currentSetting = options[this.bgClr.selIndex];
+            this.selBG().textContent = currentSetting;
+            grid.wrapper().style.backgroundColor = this.bgClr.clrOps[currentSetting];
+        };     
+    }
+    
 }
 
 clrButton1.addEventListener('click', () => clrItem.clickClr(clr.option1));
@@ -115,9 +140,9 @@ slider.onchange = () => {
     grid.newGrid(slider.value)
     clrItem.clickClr();
 };
-selectBtn.addEventListener('click', () => {removeDisplay(footerDisplay)});
-bgLeftBtn.addEventListener('click', selectSetting);
-bgRightBtn.addEventListener('click', selectSetting);    
+selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
+bgLeftBtn.addEventListener('click', () => menuSettings.selSetting('decrement'));
+bgRightBtn.addEventListener('click', () => menuSettings.selSetting('increment'));    
 
 
 grid.newGrid(slider.value)
