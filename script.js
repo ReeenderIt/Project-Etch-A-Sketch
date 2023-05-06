@@ -115,12 +115,20 @@ const menu = {
             const clrKeys = Object.keys(this.clr);
             if(op === (-1)) {
                 this.index -= 1;
+                document.getElementById('bg-clr--rght-btn').style.visibility = '';
+                if(this.index < 1) {
+                    document.getElementById('bg-clr--lft-btn').style.visibility = 'hidden';
+                }
                 const currentSetting = clrKeys[this.index];
                 this.selBG().textContent = currentSetting;
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
             };    
             if(op === 1) {
                 this.index += 1;
+                document.getElementById('bg-clr--lft-btn').style.visibility = '';
+                if(this.index === clrKeys.length-1) {
+                    document.getElementById('bg-clr--rght-btn').style.visibility = 'hidden';
+                };
                 const currentSetting = clrKeys[this.index];
                 this.selBG().textContent = currentSetting;
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
