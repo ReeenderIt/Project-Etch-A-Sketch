@@ -92,39 +92,42 @@ const clrItem = {
 
 const toggleDisplay = (object) => {
     object.classList.toggle('hide-display');
-}
+};
 
-const menuSettings = {
-    selBG: ()=>document.getElementById('bg-clr-label'),
-    bgClr: {
-        selIndex: 0,
-        clrOps: {
-            'Default': '#a4c266',
-            White: '#FFFFFF',
-            Black: '#000000',        
-        }
-    },
-    selSetting: function(op) {
-        const options = Object.keys(menuSettings.bgClr.clrOps);
-
-        if(op === 'decrement') {
-            this.bgClr.selIndex -= 1;
-            console.log(this.bgClr.selIndex);
-            let currentSetting = options[this.bgClr.selIndex];
-            this.selBG().textContent = currentSetting;
-            grid.wrapper().style.backgroundColor = this.bgClr.clrOps[currentSetting];
-        };    
-        
+const menu = {
+    switchBtn: function(op) {
         if(op === 'increment') {
-            this.bgClr.selIndex += 1;
-            console.log(this.bgClr.selIndex);
-            let currentSetting = options[this.bgClr.selIndex];
-            this.selBG().textContent = currentSetting;
-            grid.wrapper().style.backgroundColor = this.bgClr.clrOps[currentSetting];
-        };     
+            return 1;
+        };    
+        if(op === 'decrement') {
+            return (-1);
+        };
+    },
+    bgStg: {
+        selBG: ()=>document.getElementById('bg-clr-label'),
+        index: 0,
+        clr: {
+            'Default': '#a4c266',
+            White: '#FFFFFF', 
+            Black: '#000000',        
+        },
+        changeBg: function(op) {
+            const clrKeys = Object.keys(this.clr);
+            if(op === (-1)) {
+                this.index -= 1;
+                const currentSetting = clrKeys[this.index];
+                this.selBG().textContent = currentSetting;
+                grid.wrapper().style.backgroundColor = this.clr[currentSetting];
+            };    
+            if(op === 1) {
+                this.index += 1;
+                const currentSetting = clrKeys[this.index];
+                this.selBG().textContent = currentSetting;
+                grid.wrapper().style.backgroundColor = this.clr[currentSetting];
+            };     
+        }            
     }
-    
-}
+};
 
 clrButton1.addEventListener('click', () => clrItem.clickClr(clr.option1));
 clrButton2.addEventListener('click', () => clrItem.clickClr(clr.option2));
@@ -141,8 +144,8 @@ slider.onchange = () => {
     clrItem.clickClr();
 };
 selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
-bgLeftBtn.addEventListener('click', () => menuSettings.selSetting('decrement'));
-bgRightBtn.addEventListener('click', () => menuSettings.selSetting('increment'));    
+bgLeftBtn.addEventListener('click', () => menu.bgStg.changeBg(menu.switchBtn('decrement')));
+bgRightBtn.addEventListener('click', () => menu.bgStg.changeBg(menu.switchBtn('increment')));    
 
 
 grid.newGrid(slider.value)
