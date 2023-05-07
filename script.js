@@ -97,14 +97,6 @@ const toggleDisplay = (object) => {
 };
 
 const menu = {
-    switchBtn: function(op) {
-        if(op === 'increment') {
-            return 1;
-        };    
-        if(op === 'decrement') {
-            return (-1);
-        };
-    },
     bgStg: {
         selBG: ()=>document.getElementById('bg-clr-label'),
         index: 0,
@@ -115,26 +107,34 @@ const menu = {
         },
         changeBg: function(op) {
             const clrKeys = Object.keys(this.clr);
-            if(op === (-1)) {
-                this.index -= 1;
-                document.getElementById('bg-clr--rght-btn').style.visibility = '';
-                if(this.index < 1) {
-                    document.getElementById('bg-clr--lft-btn').style.visibility = 'hidden';
-                }
+
+            if(op === 'decrement') {
+                this.index--;
+
+                bgRightBtn.style.visibility = '';
+
                 const currentSetting = clrKeys[this.index];
                 this.selBG().textContent = currentSetting;
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
-            };    
-            if(op === 1) {
-                this.index += 1;
-                document.getElementById('bg-clr--lft-btn').style.visibility = '';
+            };  
+              
+            if(op === 'increment') {
+                this.index++;
+                bgLeftBtn.style.visibility = '';
+
                 if(this.index === clrKeys.length-1) {
-                    document.getElementById('bg-clr--rght-btn').style.visibility = 'hidden';
+                    bgRightBtn.style.visibility = 'hidden';
                 };
+
                 const currentSetting = clrKeys[this.index];
                 this.selBG().textContent = currentSetting;
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
             };     
+
+            if(this.index < 1) {
+                bgLeftBtn.style.visibility = 'hidden';
+            };
+
         }            
     },
     gridStg: {
@@ -173,12 +173,13 @@ slider.onchange = () => {
     clrItem.clickClr();
 };
 selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
-bgLeftBtn.addEventListener('click', () => menu.bgStg.changeBg(menu.switchBtn('decrement')));
-bgRightBtn.addEventListener('click', () => menu.bgStg.changeBg(menu.switchBtn('increment')));    
+bgLeftBtn.addEventListener('click', () => menu.bgStg.changeBg('decrement'));
+bgRightBtn.addEventListener('click', () => menu.bgStg.changeBg('increment'));    
 gridLeftBtn.addEventListener('click', () => menu.gridStg.showGrid('Yes'));
 gridRightBtn.addEventListener('click', () => menu.gridStg.showGrid('No'));    
 
 
 grid.newGrid(slider.value)
 clrItem.clickClr();
+menu.bgStg.changeBg();
 menu.gridStg.showGrid();
