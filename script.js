@@ -6,8 +6,6 @@ const clrButton3 = document.getElementById('color3');
 
 const rainbowBtn = document.getElementById('rainbow');
 const clearBtn = document.getElementById('clear');
-// rainbowBtn.textContent = 'Rainbow';
-// clearBtn.textContent = 'Clear';
 
 const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
@@ -47,20 +45,7 @@ const grid = {
     wrapper: () => document.getElementById('wrapper'),
     wrapperWidth: () => wrapper.offsetWidth,
     item: () => document.createElement('div'),
-    newGrid:
-            // Use gridFill to create new grid faster than flexFill
-        // (gridCount) => {
-            // wrapper.style.display = 'grid';
-            // wrapper.style.gridTemplateColumns = `repeat(${gridCount}, auto)`;
-            // while(wrapper.hasChildNodes()) {
-                // wrapper.removeChild(wrapper.firstChild);
-            // };
-            // for (let i = 1; i < gridCount**2+1; i++) {
-                // wrapper.appendChild(grid.item());
-            // };    
-        // }
-
-        (gridSize) => {
+    newGrid: (gridSize) => {
             wrapper.style.display = 'flex';
             const itemWidth = grid.wrapperWidth()/gridSize + `px`;
             while(wrapper.hasChildNodes()) {
