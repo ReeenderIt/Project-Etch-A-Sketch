@@ -109,23 +109,18 @@ const menu = {
             const clrKeys = Object.keys(this.clr);
 
             if(op === 'decrement') {
-                this.index--;
-
                 bgRightBtn.style.visibility = '';
 
+                this.index--;
                 const currentSetting = clrKeys[this.index];
                 this.selBG().textContent = currentSetting;
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
             };  
               
             if(op === 'increment') {
-                this.index++;
                 bgLeftBtn.style.visibility = '';
-
-                if(this.index === clrKeys.length-1) {
-                    bgRightBtn.style.visibility = 'hidden';
-                };
-
+                
+                this.index++;
                 const currentSetting = clrKeys[this.index];
                 this.selBG().textContent = currentSetting;
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
@@ -133,6 +128,8 @@ const menu = {
 
             if(this.index < 1) {
                 bgLeftBtn.style.visibility = 'hidden';
+            } else if(this.index === clrKeys.length-1) {
+                bgRightBtn.style.visibility = 'hidden';
             };
 
         }            
