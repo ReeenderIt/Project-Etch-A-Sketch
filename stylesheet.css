@@ -122,9 +122,9 @@ main {
     background-color: #a4c266;
 }
 
-#wrapper > * {
+/* #wrapper > * {
     border: solid 1px rgba(170, 170, 170, 0.238);
-}
+} */
 
 .right-main-wrapper {
     flex-direction: column;

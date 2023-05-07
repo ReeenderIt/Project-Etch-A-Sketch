@@ -19,6 +19,8 @@ const footerDisplay = document.getElementById('footer-display');
 const bgLeftBtn = document.getElementById('bg-clr--lft-btn');
 const bgRightBtn = document.getElementById('bg-clr--rght-btn');
 
+const gridLeftBtn = document.getElementById('grid--lft-btn');
+const gridRightBtn = document.getElementById('grid--rght-btn');
 
 
 
@@ -134,6 +136,29 @@ const menu = {
                 grid.wrapper().style.backgroundColor = this.clr[currentSetting];
             };     
         }            
+    },
+    gridStg: {
+        selGrid: ()=>document.getElementById('grid-show-label'),
+        gridItems: () => gridArr = [...grid.wrapper().children],
+        showGrid: function(op) {
+            this.selGrid().textContent = 'Yes';
+            this.gridItems().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
+            
+            gridLeftBtn.style.visibility = 'hidden';
+            gridRightBtn.style.visibility = '';
+
+            if(this.index < 1) {
+                document.getElementById('bg-clr--lft-btn').style.visibility = 'hidden';
+            }
+
+            if(op === 'No') {
+                this.selGrid().textContent = 'No';
+                this.gridItems().forEach((item)=>item.style.border = 'none')    
+
+                gridLeftBtn.style.visibility = '';
+                gridRightBtn.style.visibility = 'hidden';
+            };
+        }         
     }
 };
 
@@ -154,7 +179,10 @@ slider.onchange = () => {
 selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
 bgLeftBtn.addEventListener('click', () => menu.bgStg.changeBg(menu.switchBtn('decrement')));
 bgRightBtn.addEventListener('click', () => menu.bgStg.changeBg(menu.switchBtn('increment')));    
+gridLeftBtn.addEventListener('click', () => menu.gridStg.showGrid('Yes'));
+gridRightBtn.addEventListener('click', () => menu.gridStg.showGrid('No'));    
 
 
 grid.newGrid(slider.value)
 clrItem.clickClr();
+menu.gridStg.showGrid();
