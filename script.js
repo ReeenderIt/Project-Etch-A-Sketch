@@ -147,10 +147,6 @@ const menu = {
             gridLeftBtn.style.visibility = 'hidden';
             gridRightBtn.style.visibility = '';
 
-            if(this.index < 1) {
-                document.getElementById('bg-clr--lft-btn').style.visibility = 'hidden';
-            }
-
             if(op === 'No') {
                 this.selGrid().textContent = 'No';
                 this.gridItems().forEach((item)=>item.style.border = 'none')    
