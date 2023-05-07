@@ -67,9 +67,9 @@ const grid = {
                 wrapper.removeChild(wrapper.firstChild);
             };
             for (let i = 1; i < gridSize**2+1; i++) {
-                const test = grid.item();
-                test.style.flexBasis = itemWidth;
-                wrapper.appendChild(test);
+                const gridItem = grid.item();
+                gridItem.style.flexBasis = itemWidth;
+                wrapper.appendChild(gridItem);
             };
         }
 };
