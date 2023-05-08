@@ -1,11 +1,3 @@
-const eraser = document.getElementById('eraser');
-eraser.textContent = 'Eraser';
-const clrButton1 = document.getElementById('color1');
-const clrButton2 = document.getElementById('color2');
-const clrButton3 = document.getElementById('color3');
-
-const rainbowBtn = document.getElementById('rainbow');
-const clearBtn = document.getElementById('clear');
 
 const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
@@ -29,16 +21,24 @@ const rnd = {
         max: 255
     },
     number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min,
-    RGB: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`
 };
 
 const clr = {
+    eraser: () => document.getElementById('eraser'),
+    eraserBtn: () => this.eraser().textContent = 'Eraser',
+    input1: () => document.getElementById('color-picker--1'),
+    input2: () => document.getElementById('color-picker--2'),
+    input3: () => document.getElementById('color-picker--3'),
+    rainbowBtn: () => document.getElementById('rainbow'),
+    clearBtn: () => document.getElementById('clear'),
+
     def: e => e.target.style.backgroundColor = "black",
-    rainbow: e => e.target.style.backgroundColor = rnd.RGB(),
-    option1: e => e.target.style.backgroundColor = document.getElementById('color1').value,
-    option2: e => e.target.style.backgroundColor = document.getElementById('color2').value,
-    option3: e => e.target.style.backgroundColor = document.getElementById('color3').value,
-    eraser: e => e.target.style.backgroundColor = "#FFFFFF",
+    inputValue1: e => e.target.style.backgroundColor = clr.input1().value,
+    inputValue2: e => e.target.style.backgroundColor = clr.input2().value,
+    inputValue3: e => e.target.style.backgroundColor = clr.input3().value,
+    RGB: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`,
+    rainbow: e => e.target.style.backgroundColor = clr.RGB(),
+    white: e => e.target.style.backgroundColor = "#FFFFFF",
 };
 
 const grid = {
@@ -140,12 +140,15 @@ const menu = {
     }
 };
 
-clrButton1.addEventListener('click', () => clrItem.clickClr(clr.option1));
-clrButton2.addEventListener('click', () => clrItem.clickClr(clr.option2));
-clrButton3.addEventListener('click', () => clrItem.clickClr(clr.option3));
-eraser.addEventListener('click', () => clrItem.clickClr(clr.eraser));
-rainbowBtn.addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
-clearBtn.addEventListener('click', () => grid.newGrid(slider.value));
+clr.input1().addEventListener('click', () => clrItem.clickClr(clr.inputValue1));
+clr.input2().addEventListener('click', () => clrItem.clickClr(clr.inputValue2));
+clr.input3().addEventListener('click', () => clrItem.clickClr(clr.inputValue3));
+clr.eraser().addEventListener('click', () => clrItem.clickClr(clr.white));
+clr.rainbowBtn().addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
+clr.clearBtn().addEventListener('click', () => {
+    grid.newGrid(slider.value);
+    menu.gridStg.showGrid();
+});
 slider.oninput = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
 };
