@@ -142,41 +142,50 @@ const menu = {
     }
 };
 
-clr.input1().addEventListener('click', () => clrItem.clickClr(clr.inputValue1));
-clr.input2().addEventListener('click', () => clrItem.clickClr(clr.inputValue2));
-clr.input3().addEventListener('click', () => clrItem.clickClr(clr.inputValue3));
-clr.eraser().addEventListener('click', () => clrItem.clickClr(clr.white));
-clr.rainbowBtn().addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
-clr.clearBtn().addEventListener('click', () => {
+function mainFunction() {
     grid.newGrid(slider.value);
-    menu.gridStg.setGrid(menu.gridStg.storedStg);
-});
-slider.oninput = () => {
-    sizeP.textContent=`${slider.value} x ${slider.value}`;
-};
-slider.onchange = () => {
-    grid.newGrid(slider.value)
     clrItem.clickClr();
-    menu.gridStg.setGrid(menu.gridStg.storedStg);
+    menu.bgStg.chooseStg();
+    menu.gridStg.setGrid();
 };
-selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
-bgLeftBtn.addEventListener('click', () => {
-    menu.bgStg.chooseStg('decrement');
-    menu.bgStg.setBg(menu.bgStg.storedStg)});
-bgRightBtn.addEventListener('click', () => {
-    menu.bgStg.chooseStg('increment');
-    menu.bgStg.setBg(menu.bgStg.storedStg)});    
-gridLeftBtn.addEventListener('click', () => {
-    menu.gridStg.chooseStg('Yes');
-    menu.gridStg.setGrid(menu.gridStg.storedStg);
-});
-gridRightBtn.addEventListener('click', () => {
-    menu.gridStg.chooseStg('No');
-    menu.gridStg.setGrid(menu.gridStg.storedStg);
-});    
 
+function eventListeners() {
+    clr.input1().addEventListener('click', () => clrItem.clickClr(clr.inputValue1));
+    clr.input2().addEventListener('click', () => clrItem.clickClr(clr.inputValue2));
+    clr.input3().addEventListener('click', () => clrItem.clickClr(clr.inputValue3));
+    clr.eraser().addEventListener('click', () => clrItem.clickClr(clr.white));
+    clr.rainbowBtn().addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
+    clr.clearBtn().addEventListener('click', () => {
+        grid.newGrid(slider.value);
+        menu.gridStg.setGrid(menu.gridStg.storedStg);
+    });
 
-grid.newGrid(slider.value)
-clrItem.clickClr();
-menu.bgStg.chooseStg();
-menu.gridStg.setGrid();
+    slider.oninput = () => {
+        sizeP.textContent=`${slider.value} x ${slider.value}`;
+    };
+    slider.onchange = () => {
+        grid.newGrid(slider.value)
+        clrItem.clickClr();
+        menu.gridStg.setGrid(menu.gridStg.storedStg);
+    };
+
+    selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
+
+    bgLeftBtn.addEventListener('click', () => {
+        menu.bgStg.chooseStg('decrement');
+        menu.bgStg.setBg(menu.bgStg.storedStg)});
+    bgRightBtn.addEventListener('click', () => {
+        menu.bgStg.chooseStg('increment');
+        menu.bgStg.setBg(menu.bgStg.storedStg)});    
+    gridLeftBtn.addEventListener('click', () => {
+        menu.gridStg.chooseStg('Yes');
+        menu.gridStg.setGrid(menu.gridStg.storedStg);
+    });
+    gridRightBtn.addEventListener('click', () => {
+        menu.gridStg.chooseStg('No');
+        menu.gridStg.setGrid(menu.gridStg.storedStg);
+    });    
+};
+
+mainFunction()
+eventListeners()
