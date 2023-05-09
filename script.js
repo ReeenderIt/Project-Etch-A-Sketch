@@ -97,13 +97,13 @@ const menu = {
             if(op === 'decrement') {
                 bgRightBtn.style.visibility = '';
                 this.index--;
-                this.storedSetting = clrKeys[this.index];
+                this.storedStg = clrKeys[this.index];
             };  
               
             if(op === 'increment') {
                 bgLeftBtn.style.visibility = '';
                 this.index++;
-                this.storedSetting = clrKeys[this.index];
+                this.storedStg = clrKeys[this.index];
             };
 
             if(this.index < 1) {
@@ -118,17 +118,21 @@ const menu = {
         }            
     },
     gridStg: {
-        selGrid: ()=>document.getElementById('grid-show-label'),
+        optLabel: () => document.getElementById('grid-show-label'),
         gridItems: () => gridArr = [...grid.wrapper().children],
-        showGrid: function(op) {
-            this.selGrid().textContent = 'Yes';
+        storedStg: '',
+        chooseStg: function(op) {
+            this.storedStg = op;
+        },
+        setGrid: function(op) {
+            this.optLabel().textContent = 'Yes';
             this.gridItems().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
             
             gridLeftBtn.style.visibility = 'hidden';
             gridRightBtn.style.visibility = '';
 
             if(op === 'No') {
-                this.selGrid().textContent = 'No';
+                this.optLabel().textContent = op;
                 this.gridItems().forEach((item)=>item.style.border = 'none')    
 
                 gridLeftBtn.style.visibility = '';
@@ -145,7 +149,7 @@ clr.eraser().addEventListener('click', () => clrItem.clickClr(clr.white));
 clr.rainbowBtn().addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
 clr.clearBtn().addEventListener('click', () => {
     grid.newGrid(slider.value);
-    menu.gridStg.showGrid();
+    menu.gridStg.setGrid(menu.gridStg.storedStg);
 });
 slider.oninput = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
@@ -158,15 +162,21 @@ slider.onchange = () => {
 selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
 bgLeftBtn.addEventListener('click', () => {
     menu.bgStg.chooseStg('decrement');
-    menu.bgStg.setBg(menu.bgStg.storedSetting)});
+    menu.bgStg.setBg(menu.bgStg.storedStg)});
 bgRightBtn.addEventListener('click', () => {
     menu.bgStg.chooseStg('increment');
-    menu.bgStg.setBg(menu.bgStg.storedSetting)});    
-gridLeftBtn.addEventListener('click', () => menu.gridStg.showGrid('Yes'));
-gridRightBtn.addEventListener('click', () => menu.gridStg.showGrid('No'));    
+    menu.bgStg.setBg(menu.bgStg.storedStg)});    
+gridLeftBtn.addEventListener('click', () => {
+    menu.gridStg.chooseStg('Yes');
+    menu.gridStg.setGrid(menu.gridStg.storedStg);
+});
+gridRightBtn.addEventListener('click', () => {
+    menu.gridStg.chooseStg('No');
+    menu.gridStg.setGrid(menu.gridStg.storedStg);
+});    
 
 
 grid.newGrid(slider.value)
 clrItem.clickClr();
 menu.bgStg.chooseStg();
-menu.gridStg.showGrid();
+menu.gridStg.setGrid();
