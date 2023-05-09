@@ -44,6 +44,7 @@ const clr = {
 const grid = {
     wrapper: () => document.getElementById('wrapper'),
     wrapperWidth: () => wrapper.offsetWidth,
+    items: () => gridArr = [...grid.wrapper().children],
     item: () => document.createElement('div'),
     newGrid: (gridSize) => {
             wrapper.style.display = 'flex';
@@ -118,21 +119,20 @@ const menu = {
     },
     gridStg: {
         optLabel: () => document.getElementById('grid-show-label'),
-        gridItems: () => gridArr = [...grid.wrapper().children],
         storedStg: '',
         chooseStg: function(op) {
             this.storedStg = op;
         },
         setGrid: function(op) {
             this.optLabel().textContent = 'Yes';
-            this.gridItems().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
+            grid.items().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
             
             gridLeftBtn.style.visibility = 'hidden';
             gridRightBtn.style.visibility = '';
 
             if(op === 'No') {
                 this.optLabel().textContent = op;
-                this.gridItems().forEach((item)=>item.style.border = 'none')    
+                grid.items().forEach((item)=>item.style.border = 'none')    
 
                 gridLeftBtn.style.visibility = '';
                 gridRightBtn.style.visibility = 'hidden';
