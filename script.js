@@ -73,7 +73,6 @@ const clrItem = {
             divItem.removeEventListener('mouseover', clr.rainbow);
             divItem.addEventListener('mouseover', color);
         });
-
     }
 };
 
