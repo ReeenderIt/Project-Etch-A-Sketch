@@ -90,33 +90,31 @@ const menu = {
             White: '#FFFFFF', 
             Black: '#000000',        
         },
-        changeBg: function(op) {
+        storedStg: '',
+        chooseStg: function(op) {
             const clrKeys = Object.keys(this.clr);
 
             if(op === 'decrement') {
                 bgRightBtn.style.visibility = '';
-
                 this.index--;
-                const currentSetting = clrKeys[this.index];
-                this.selBG().textContent = currentSetting;
-                grid.wrapper().style.backgroundColor = this.clr[currentSetting];
+                this.storedSetting = clrKeys[this.index];
             };  
               
             if(op === 'increment') {
                 bgLeftBtn.style.visibility = '';
-                
                 this.index++;
-                const currentSetting = clrKeys[this.index];
-                this.selBG().textContent = currentSetting;
-                grid.wrapper().style.backgroundColor = this.clr[currentSetting];
-            };     
+                this.storedSetting = clrKeys[this.index];
+            };
 
             if(this.index < 1) {
                 bgLeftBtn.style.visibility = 'hidden';
             } else if(this.index === clrKeys.length-1) {
                 bgRightBtn.style.visibility = 'hidden';
             };
-
+        },
+        setBg: function(setting = 'Default') {
+            this.selBG().textContent = setting;
+            grid.wrapper().style.backgroundColor = this.clr[setting];              
         }            
     },
     gridStg: {
@@ -158,13 +156,17 @@ slider.onchange = () => {
     clrItem.clickClr();
 };
 selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
-bgLeftBtn.addEventListener('click', () => menu.bgStg.changeBg('decrement'));
-bgRightBtn.addEventListener('click', () => menu.bgStg.changeBg('increment'));    
+bgLeftBtn.addEventListener('click', () => {
+    menu.bgStg.chooseStg('decrement');
+    menu.bgStg.setBg(menu.bgStg.storedSetting)});
+bgRightBtn.addEventListener('click', () => {
+    menu.bgStg.chooseStg('increment');
+    menu.bgStg.setBg(menu.bgStg.storedSetting)});    
 gridLeftBtn.addEventListener('click', () => menu.gridStg.showGrid('Yes'));
 gridRightBtn.addEventListener('click', () => menu.gridStg.showGrid('No'));    
 
 
 grid.newGrid(slider.value)
 clrItem.clickClr();
-menu.bgStg.changeBg();
+menu.bgStg.chooseStg();
 menu.gridStg.showGrid();
