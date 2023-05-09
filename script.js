@@ -155,9 +155,9 @@ slider.oninput = () => {
     sizeP.textContent=`${slider.value} x ${slider.value}`;
 };
 slider.onchange = () => {
-    sizeP.textContent=`${slider.value} x ${slider.value}`;
     grid.newGrid(slider.value)
     clrItem.clickClr();
+    menu.gridStg.setGrid(menu.gridStg.storedStg);
 };
 selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
 bgLeftBtn.addEventListener('click', () => {
