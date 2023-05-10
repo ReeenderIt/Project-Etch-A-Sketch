@@ -1,6 +1,3 @@
-const slider = document.getElementById('myRange');
-const sizeP = document.getElementById('size-p');
-sizeP.textContent = `${slider.value} x ${slider.value}`;
 
 const rnd = {
     limit: {
@@ -63,6 +60,14 @@ const clrItem = {
         });
     }
 };
+
+const slider = {
+    range: () => document.getElementById('myRange'),
+    rangeOutput: () => document.getElementById('size-p'),
+    showRange: () => {
+        slider.rangeOutput().textContent = `${slider.range().value} x ${slider.range().value}`
+    }
+}
 
 const footer = {
     selectBtn: () => document.getElementById('select'),
@@ -137,8 +142,9 @@ const menu = {
 };
 
 function mainFunction() {
-    grid.newGrid(slider.value);
+    grid.newGrid(slider.range().value);
     clrItem.clickClr();
+    slider.showRange();
     menu.bgStg.chooseStg();
     menu.gridStg.setGrid();
 };
@@ -150,15 +156,15 @@ function eventListeners() {
     clr.eraser().addEventListener('click', () => clrItem.clickClr(clr.white));
     clr.rainbowBtn().addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
     clr.clearBtn().addEventListener('click', () => {
-        grid.newGrid(slider.value);
+        grid.newGrid(slider.range().value);
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
 
-    slider.oninput = () => {
-        sizeP.textContent=`${slider.value} x ${slider.value}`;
+    slider.range().oninput = () => {
+        slider.showRange();
     };
-    slider.onchange = () => {
-        grid.newGrid(slider.value)
+    slider.range().onchange = () => {
+        grid.newGrid(slider.range().value)
         clrItem.clickClr();
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     };
