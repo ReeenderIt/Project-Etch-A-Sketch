@@ -1,17 +1,6 @@
-
 const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
 sizeP.textContent = `${slider.value} x ${slider.value}`;
-
-
-const bgLeftBtn = document.getElementById('bg-clr--lft-btn');
-const bgRightBtn = document.getElementById('bg-clr--rght-btn');
-
-const gridLeftBtn = document.getElementById('grid--lft-btn');
-const gridRightBtn = document.getElementById('grid--rght-btn');
-
-
-
 
 const rnd = {
     limit: {
@@ -85,7 +74,9 @@ const footer = {
 
 const menu = {
     bgStg: {
-        selBG: ()=>document.getElementById('bg-clr-label'),
+        leftBtn: () => document.getElementById('bg-clr--lft-btn'),
+        rightBtn: () => document.getElementById('bg-clr--rght-btn'),
+        selBG: () => document.getElementById('bg-clr-label'),
         index: 0,
         clr: {
             'Default': '#a4c266',
@@ -97,21 +88,21 @@ const menu = {
             const clrKeys = Object.keys(this.clr);
 
             if(op === 'decrement') {
-                bgRightBtn.style.visibility = '';
+                this.rightBtn().style.visibility = '';
                 this.index--;
                 this.storedStg = clrKeys[this.index];
             };  
               
             if(op === 'increment') {
-                bgLeftBtn.style.visibility = '';
+                this.leftBtn().style.visibility = '';
                 this.index++;
                 this.storedStg = clrKeys[this.index];
             };
 
             if(this.index < 1) {
-                bgLeftBtn.style.visibility = 'hidden';
+                this.leftBtn().style.visibility = 'hidden';
             } else if(this.index === clrKeys.length-1) {
-                bgRightBtn.style.visibility = 'hidden';
+                this.rightBtn().style.visibility = 'hidden';
             };
         },
         setBg: function(setting = 'Default') {
@@ -120,6 +111,8 @@ const menu = {
         }            
     },
     gridStg: {
+        leftBtn: () => document.getElementById('grid--lft-btn'),
+        rightBtn: () => document.getElementById('grid--rght-btn'),
         optLabel: () => document.getElementById('grid-show-label'),
         storedStg: '',
         chooseStg: function(op) {
@@ -129,15 +122,15 @@ const menu = {
             this.optLabel().textContent = 'Yes';
             grid.items().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
             
-            gridLeftBtn.style.visibility = 'hidden';
-            gridRightBtn.style.visibility = '';
+            this.leftBtn().style.visibility = 'hidden';
+            this.rightBtn().style.visibility = '';
 
             if(op === 'No') {
                 this.optLabel().textContent = op;
                 grid.items().forEach((item)=>item.style.border = 'none')    
 
-                gridLeftBtn.style.visibility = '';
-                gridRightBtn.style.visibility = 'hidden';
+                this.leftBtn().style.visibility = '';
+                this.rightBtn().style.visibility = 'hidden';
             };
         }         
     }
@@ -172,17 +165,17 @@ function eventListeners() {
 
     footer.selectBtn().addEventListener('click', () => footer.toggleDisplay(footer.display()));
 
-    bgLeftBtn.addEventListener('click', () => {
+    menu.bgStg.leftBtn().addEventListener('click', () => {
         menu.bgStg.chooseStg('decrement');
         menu.bgStg.setBg(menu.bgStg.storedStg)});
-    bgRightBtn.addEventListener('click', () => {
+    menu.bgStg.rightBtn().addEventListener('click', () => {
         menu.bgStg.chooseStg('increment');
         menu.bgStg.setBg(menu.bgStg.storedStg)});    
-    gridLeftBtn.addEventListener('click', () => {
+    menu.gridStg.leftBtn().addEventListener('click', () => {
         menu.gridStg.chooseStg('Yes');
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
-    gridRightBtn.addEventListener('click', () => {
+    menu.gridStg.rightBtn().addEventListener('click', () => {
         menu.gridStg.chooseStg('No');
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });    
