@@ -3,8 +3,6 @@ const slider = document.getElementById('myRange');
 const sizeP = document.getElementById('size-p');
 sizeP.textContent = `${slider.value} x ${slider.value}`;
 
-const selectBtn = document.getElementById('select')
-const footerDisplay = document.getElementById('footer-display');
 
 const bgLeftBtn = document.getElementById('bg-clr--lft-btn');
 const bgRightBtn = document.getElementById('bg-clr--rght-btn');
@@ -77,9 +75,13 @@ const clrItem = {
     }
 };
 
-const toggleDisplay = (object) => {
-    object.classList.toggle('hide-display');
-};
+const footer = {
+    selectBtn: () => document.getElementById('select'),
+    display: () => document.getElementById('footer-display'),
+    toggleDisplay: (object) => {
+        object.classList.toggle('hide-display');
+    }
+}
 
 const menu = {
     bgStg: {
@@ -168,7 +170,7 @@ function eventListeners() {
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     };
 
-    selectBtn.addEventListener('click', () => toggleDisplay(footerDisplay));
+    footer.selectBtn().addEventListener('click', () => footer.toggleDisplay(footer.display()));
 
     bgLeftBtn.addEventListener('click', () => {
         menu.bgStg.chooseStg('decrement');
