@@ -62,14 +62,14 @@ const grid = {
 
 const clrItem = {
     clickClr: (color = clr.def) => {
-        document.querySelectorAll('#wrapper > div').forEach(divItem => {
+        grid.items().forEach(divItem => {
             divItem.removeEventListener('mouseover', clr.rainbow);
             divItem.removeEventListener('click', color);
             divItem.addEventListener('click', color);
         });
     },
     hoverClr: (color = clr.def) => {
-        document.querySelectorAll('#wrapper > div').forEach(divItem => {
+        grid.items().forEach(divItem => {
             divItem.removeEventListener('click', color);
             divItem.removeEventListener('mouseover', clr.rainbow);
             divItem.addEventListener('mouseover', color);
