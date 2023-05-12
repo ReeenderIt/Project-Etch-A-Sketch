@@ -77,7 +77,7 @@ const footer = {
     }
 }
 
-const menu = {
+let menu = {
     bgStg: {
         leftBtn: () => document.getElementById('bg-clr--lft-btn'),
         rightBtn: () => document.getElementById('bg-clr--rght-btn'),
@@ -88,7 +88,6 @@ const menu = {
             White: '#FFFFFF', 
             Black: '#000000',        
         },
-        storedStg: '',
         chooseStg: function(op) {
             const clrKeys = Object.keys(this.clr);
 
@@ -119,10 +118,6 @@ const menu = {
         leftBtn: () => document.getElementById('grid--lft-btn'),
         rightBtn: () => document.getElementById('grid--rght-btn'),
         optLabel: () => document.getElementById('grid-show-label'),
-        storedStg: '',
-        chooseStg: function(op) {
-            this.storedStg = op;
-        },
         setGrid: function(op) {
             this.optLabel().textContent = 'Yes';
             grid.items().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
@@ -178,11 +173,11 @@ function eventListeners() {
         menu.bgStg.chooseStg('increment');
         menu.bgStg.setBg(menu.bgStg.storedStg)});    
     menu.gridStg.leftBtn().addEventListener('click', () => {
-        menu.gridStg.chooseStg('Yes');
+        menu.gridStg.storedStg = 'Yes';
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
     menu.gridStg.rightBtn().addEventListener('click', () => {
-        menu.gridStg.chooseStg('No');
+        menu.gridStg.storedStg = 'No';
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });    
 };
