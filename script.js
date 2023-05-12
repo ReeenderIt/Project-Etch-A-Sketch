@@ -91,13 +91,13 @@ let menu = {
         chooseStg: function(op) {
             const clrKeys = Object.keys(this.clr);
 
-            if(op === 'decrement') {
+            if(op === 'left') {
                 this.rightBtn().style.visibility = '';
                 this.index--;
                 this.storedStg = clrKeys[this.index];
             };  
               
-            if(op === 'increment') {
+            if(op === 'right') {
                 this.leftBtn().style.visibility = '';
                 this.index++;
                 this.storedStg = clrKeys[this.index];
@@ -167,10 +167,10 @@ function eventListeners() {
     footer.selectBtn().addEventListener('click', () => footer.toggleDisplay(footer.display()));
 
     menu.bgStg.leftBtn().addEventListener('click', () => {
-        menu.bgStg.chooseStg('decrement');
+        menu.bgStg.chooseStg('left');
         menu.bgStg.setBg(menu.bgStg.storedStg)});
     menu.bgStg.rightBtn().addEventListener('click', () => {
-        menu.bgStg.chooseStg('increment');
+        menu.bgStg.chooseStg('right');
         menu.bgStg.setBg(menu.bgStg.storedStg)});    
     menu.gridStg.leftBtn().addEventListener('click', () => {
         menu.gridStg.storedStg = 'Yes';
