@@ -39,6 +39,10 @@ body {
     display: flex;
 }
 
+.jc-space-around {
+    justify-content: space-around;
+}
+
 .hide-display {
     display: none;
 }
@@ -168,11 +172,7 @@ main {
     transform: rotate(327deg);
 }
 
-.btns, .btn-labels {
-    justify-content: space-around;
-}
-
-.btns button {
+.btn-group button {
     background-color: #c4276e;
     font-size: 1.4rem;
     display: block;
@@ -181,18 +181,15 @@ main {
     border-radius: 50%;
     border: solid 1px #bcbcbc;
     box-shadow: -2px 4px 0px 0px black;
-}
-
-.btns button {
     transition: transform ease-in;
 }
 
-.btns button:hover {
+.btn-group button:hover {
     transform: scale(1.1, 1.1);
     border: solid 1px #bcbcbc;
 }
 
-.btns button:active {
+.btn-group button:active {
     transform: translate(-3px,6px) scale(1, 1);
     border: solid 1px black;
     box-shadow: none;
