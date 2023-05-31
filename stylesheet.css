@@ -255,22 +255,7 @@ menu > div {
     flex: 50%;
 }
 
-.carousel_opt {
-    height: max-content;
-    flex-direction: column;
-}
-
-.carousel_track-container {
+.option_text-container {
     width: 8em;
     text-align: center;
-}
-
-.carousel_track {
-    display: flex;
-    justify-content: center;
-}
-
-.carousel_slide {
-    position: absolute;
-    width: fit-content;
 }
