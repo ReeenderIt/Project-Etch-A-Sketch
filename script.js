@@ -12,7 +12,7 @@ const color = {
     rainbowBtn: () => document.getElementById('rainbow'),
     clearBtn: () => document.getElementById('clear'),
 
-    applydefault: e => e.target.style.backgroundColor = "black",
+    applyDefault: e => e.target.style.backgroundColor = "black",
     inputValue1: e => e.target.style.backgroundColor = color.input1().value,
     inputValue2: e => e.target.style.backgroundColor = color.input2().value,
     inputValue3: e => e.target.style.backgroundColor = color.input3().value,
@@ -41,14 +41,14 @@ const grid = {
 };
 
 const paint = {
-    item: (colorInput = color.applydefault) => {
+    item: (colorInput = color.applyDefault) => {
         grid.items().forEach(divItem => {
             divItem.removeEventListener('mouseover', color.rainbow);
             divItem.removeEventListener('click', colorInput);
             divItem.addEventListener('click', colorInput);
         });
     },
-    items: (colorInput = color.applydefault) => {
+    items: (colorInput = color.applyDefault) => {
         grid.items().forEach(divItem => {
             divItem.removeEventListener('click', colorInput);
             divItem.removeEventListener('mouseover', color.rainbow);
