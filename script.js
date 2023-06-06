@@ -1,10 +1,7 @@
 
-const rnd = {
-    limit: {
-        min: 0,
-        max: 255
-    },
-    number: () => Math.floor(Math.random() * (rnd.limit.max - rnd.limit.min + 1)) + rnd.limit.min,
+const rng = {
+    limit: { min: 0, max: 255 },
+    number: () => Math.floor(Math.random() * (rng.limit.max - rng.limit.min + 1)) + rng.limit.min,
 };
 
 const clr = {
@@ -20,7 +17,7 @@ const clr = {
     inputValue1: e => e.target.style.backgroundColor = clr.input1().value,
     inputValue2: e => e.target.style.backgroundColor = clr.input2().value,
     inputValue3: e => e.target.style.backgroundColor = clr.input3().value,
-    RGB: () => `rgb(${rnd.number()}, ${rnd.number()}, ${rnd.number()})`,
+    RGB: () => `rgb(${rng.number()}, ${rng.number()}, ${rng.number()})`,
     rainbow: e => e.target.style.backgroundColor = clr.RGB(),
     white: e => e.target.style.backgroundColor = "#FFFFFF",
 };
