@@ -4,21 +4,20 @@ const rng = {
     number: () => Math.floor(Math.random() * (rng.limit.max - rng.limit.min + 1)) + rng.limit.min,
 };
 
-const clr = {
-    eraser: () => document.getElementById('eraser'),
-    eraserBtn: () => this.eraser().textContent = 'Eraser',
+const color = {
     input1: () => document.getElementById('color-picker--1'),
     input2: () => document.getElementById('color-picker--2'),
     input3: () => document.getElementById('color-picker--3'),
+    eraser: () => document.getElementById('eraser'),
     rainbowBtn: () => document.getElementById('rainbow'),
     clearBtn: () => document.getElementById('clear'),
 
-    def: e => e.target.style.backgroundColor = "black",
-    inputValue1: e => e.target.style.backgroundColor = clr.input1().value,
-    inputValue2: e => e.target.style.backgroundColor = clr.input2().value,
-    inputValue3: e => e.target.style.backgroundColor = clr.input3().value,
+    applydefault: e => e.target.style.backgroundColor = "black",
+    inputValue1: e => e.target.style.backgroundColor = color.input1().value,
+    inputValue2: e => e.target.style.backgroundColor = color.input2().value,
+    inputValue3: e => e.target.style.backgroundColor = color.input3().value,
     RGB: () => `rgb(${rng.number()}, ${rng.number()}, ${rng.number()})`,
-    rainbow: e => e.target.style.backgroundColor = clr.RGB(),
+    rainbow: e => e.target.style.backgroundColor = color.RGB(),
     white: e => e.target.style.backgroundColor = "#FFFFFF",
 };
 
@@ -41,19 +40,19 @@ const grid = {
         }
 };
 
-const clrItem = {
-    clickClr: (color = clr.def) => {
+const paint = {
+    item: (colorInput = color.applydefault) => {
         grid.items().forEach(divItem => {
-            divItem.removeEventListener('mouseover', clr.rainbow);
-            divItem.removeEventListener('click', color);
-            divItem.addEventListener('click', color);
+            divItem.removeEventListener('mouseover', color.rainbow);
+            divItem.removeEventListener('click', colorInput);
+            divItem.addEventListener('click', colorInput);
         });
     },
-    hoverClr: (color = clr.def) => {
+    items: (colorInput = color.applydefault) => {
         grid.items().forEach(divItem => {
-            divItem.removeEventListener('click', color);
-            divItem.removeEventListener('mouseover', clr.rainbow);
-            divItem.addEventListener('mouseover', color);
+            divItem.removeEventListener('click', colorInput);
+            divItem.removeEventListener('mouseover', color.rainbow);
+            divItem.addEventListener('mouseover', colorInput);
         });
     }
 };
@@ -80,35 +79,35 @@ let menu = {
         rightBtn: () => document.getElementById('bg-clr--rght-btn'),
         selBG: () => document.getElementById('bg-clr-label'),
         index: 0,
-        clr: {
+        color: {
             'Default': '#a4c266',
             White: '#FFFFFF', 
             Black: '#000000',        
         },
         chooseStg: function(op) {
-            const clrKeys = Object.keys(this.clr);
+            const colorKeys = Object.keys(this.color);
 
             if(op === 'left') {
                 this.rightBtn().style.visibility = '';
                 this.index--;
-                this.storedStg = clrKeys[this.index];
+                this.storedStg = colorKeys[this.index];
             };  
               
             if(op === 'right') {
                 this.leftBtn().style.visibility = '';
                 this.index++;
-                this.storedStg = clrKeys[this.index];
+                this.storedStg = colorKeys[this.index];
             };
 
             if(this.index < 1) {
                 this.leftBtn().style.visibility = 'hidden';
-            } else if(this.index === clrKeys.length-1) {
+            } else if(this.index === colorKeys.length-1) {
                 this.rightBtn().style.visibility = 'hidden';
             };
         },
         setBg: function(setting = 'Default') {
             this.selBG().textContent = setting;
-            grid.wrapper().style.backgroundColor = this.clr[setting];              
+            grid.wrapper().style.backgroundColor = this.color[setting];              
         }            
     },
     gridStg: {
@@ -135,19 +134,19 @@ let menu = {
 
 function mainFunction() {
     grid.newGrid(slider.range().value);
-    clrItem.clickClr();
+    paint.item();
     slider.showRange();
     menu.bgStg.chooseStg();
     menu.gridStg.setGrid();
 };
 
 function eventListeners() {
-    clr.input1().addEventListener('click', () => clrItem.clickClr(clr.inputValue1));
-    clr.input2().addEventListener('click', () => clrItem.clickClr(clr.inputValue2));
-    clr.input3().addEventListener('click', () => clrItem.clickClr(clr.inputValue3));
-    clr.eraser().addEventListener('click', () => clrItem.clickClr(clr.white));
-    clr.rainbowBtn().addEventListener('click', () => clrItem.hoverClr(clr.rainbow));
-    clr.clearBtn().addEventListener('click', () => {
+    color.input1().addEventListener('click', () => paint.item(color.inputValue1));
+    color.input2().addEventListener('click', () => paint.item(color.inputValue2));
+    color.input3().addEventListener('click', () => paint.item(color.inputValue3));
+    color.eraser().addEventListener('click', () => paint.item(color.white));
+    color.rainbowBtn().addEventListener('click', () => paint.items(color.rainbow));
+    color.clearBtn().addEventListener('click', () => {
         grid.newGrid(slider.range().value);
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
@@ -157,7 +156,7 @@ function eventListeners() {
     };
     slider.range().onchange = () => {
         grid.newGrid(slider.range().value)
-        clrItem.clickClr();
+        paint.item();
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     };
 
