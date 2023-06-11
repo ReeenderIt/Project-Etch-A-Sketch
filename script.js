@@ -41,19 +41,21 @@ const grid = {
 };
 
 const paint = {
-    item: (colorInput = color.applyDefault) => {
+    item: (colorInput) => {
         grid.items().forEach(divItem => {
             divItem.removeEventListener('mouseover', color.rainbow);
-            divItem.removeEventListener('click', colorInput);
+            divItem.removeEventListener('click', paint.previousColor);
             divItem.addEventListener('click', colorInput);
         });
+        paint.previousColor = colorInput;
     },
-    items: (colorInput = color.applyDefault) => {
+    items: (colorInput) => {
         grid.items().forEach(divItem => {
-            divItem.removeEventListener('click', colorInput);
+            divItem.removeEventListener('click', paint.previousColor);
             divItem.removeEventListener('mouseover', color.rainbow);
             divItem.addEventListener('mouseover', colorInput);
         });
+        paint.previousColor = colorInput;
     }
 };
 
@@ -134,7 +136,7 @@ let menu = {
 
 function mainFunction() {
     grid.newGrid(slider.range().value);
-    paint.item();
+    paint.item(color.inputValue1);
     slider.showRange();
     menu.bgStg.chooseStg();
     menu.gridStg.setGrid();
