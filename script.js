@@ -12,7 +12,6 @@ const color = {
     rainbowBtn: () => document.getElementById('rainbow'),
     clearBtn: () => document.getElementById('clear'),
 
-    applyDefault: e => e.target.style.backgroundColor = "black",
     inputValue1: e => e.target.style.backgroundColor = color.input1().value,
     inputValue2: e => e.target.style.backgroundColor = color.input2().value,
     inputValue3: e => e.target.style.backgroundColor = color.input3().value,
