@@ -51,7 +51,6 @@ const paint = {
     items: (colorInput) => {
         grid.items().forEach(divItem => {
             divItem.removeEventListener('click', paint.previousColor);
-            divItem.removeEventListener('mouseover', color.rainbow);
             divItem.addEventListener('mouseover', colorInput);
         });
         paint.previousColor = colorInput;
