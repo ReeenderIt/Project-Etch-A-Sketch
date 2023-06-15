@@ -17,7 +17,7 @@ const color = {
     inputValue3: e => e.target.style.backgroundColor = color.input3().value,
     RGB: () => `rgb(${rng.number()}, ${rng.number()}, ${rng.number()})`,
     rainbow: e => e.target.style.backgroundColor = color.RGB(),
-    white: e => e.target.style.backgroundColor = "#FFFFFF",
+    applyBgColor: e => e.target.style.backgroundColor = grid.wrapper().style.backgroundColor,
 };
 
 const grid = {
@@ -145,7 +145,7 @@ function eventListeners() {
     color.input1().addEventListener('click', () => paint.item(color.inputValue1));
     color.input2().addEventListener('click', () => paint.item(color.inputValue2));
     color.input3().addEventListener('click', () => paint.item(color.inputValue3));
-    color.eraser().addEventListener('click', () => paint.item(color.white));
+    color.eraser().addEventListener('click', () => paint.item(color.applyBgColor));
     color.rainbowBtn().addEventListener('click', () => paint.items(color.rainbow));
     color.clearBtn().addEventListener('click', () => {
         grid.newGrid(slider.range().value);
