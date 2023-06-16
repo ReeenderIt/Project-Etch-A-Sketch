@@ -80,7 +80,7 @@ let menu = {
         selBG: () => document.getElementById('bg-clr-label'),
         index: 0,
         color: {
-            'Default': '#a4c266',
+            Default: '#a4c266',
             White: '#FFFFFF', 
             Black: '#000000',        
         },
