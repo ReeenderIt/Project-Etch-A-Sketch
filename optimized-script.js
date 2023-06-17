@@ -21,7 +21,7 @@ const grid = {
     wrapper: document.getElementById('wrapper'),
     wrapperWidth: wrapper.offsetWidth,
     items: () => gridArr = [...grid.wrapper.children],
-    newGrid: (gridSize) => {
+    newGrid: gridSize => {
             wrapper.style.display = 'flex';
             const itemWidth = grid.wrapperWidth/gridSize + `px`;
             while(wrapper.hasChildNodes()) {
@@ -36,7 +36,7 @@ const grid = {
 };
 
 const paint = {    
-    getCurrentValue: (e) => {
+    getCurrentValue: e => {
         e.currentTarget.style.backgroundColor = color.currentValue || 'black';
     },
     applyClick: () => {
@@ -67,7 +67,7 @@ const slider = {
 const footer = {
     selectBtn: document.getElementById('select'),
     display: document.getElementById('footer-display'),
-    toggleDisplay: (object) => {
+    toggleDisplay: object => {
         object.classList.toggle('hide-display');
     }
 }
@@ -115,14 +115,14 @@ let menu = {
         optLabel: document.getElementById('grid-show-label'),
         setGrid: function(op) {
             this.optLabel.textContent = 'Yes';
-            grid.items().forEach((item)=>item.style.border = 'solid 1px #aaaaaa3d');
+            grid.items().forEach( item => item.style.border = 'solid 1px #aaaaaa3d');
             
             this.leftBtn.style.visibility = 'hidden';
             this.rightBtn.style.visibility = 'visible';
 
             if(op === 'No') {
                 this.optLabel.textContent = op;
-                grid.items().forEach((item)=>item.style.border = 'none')    
+                grid.items().forEach( item => item.style.border = 'none')    
 
                 this.leftBtn.style.visibility = '';
                 this.rightBtn.style.visibility = 'hidden';
@@ -140,15 +140,15 @@ function mainFunction() {
 };
 
 function eventListeners() {
-    color.input1.addEventListener('mouseleave', (e) => {
+    color.input1.addEventListener('mouseleave', e => {
         color.getInputValue(e);
         paint.applyClick();
     });
-    color.input2.addEventListener('mouseleave', (e) => {
+    color.input2.addEventListener('mouseleave', e => {
         color.getInputValue(e);
         paint.applyClick();
     });
-    color.input3.addEventListener('mouseleave', (e) => {
+    color.input3.addEventListener('mouseleave', e => {
         color.getInputValue(e);
         paint.applyClick();
     });
@@ -162,9 +162,7 @@ function eventListeners() {
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
 
-    slider.range.oninput = () => {
-        slider.showRange();
-    };
+    slider.range.oninput = () => { slider.showRange() };
     slider.range.onchange = () => {
         grid.newGrid(slider.range.value)
         paint.applyClick();
