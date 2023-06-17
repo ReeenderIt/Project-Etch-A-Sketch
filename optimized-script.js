@@ -20,7 +20,7 @@ const color = {
 const grid = {
     wrapper: document.getElementById('wrapper'),
     wrapperWidth: wrapper.offsetWidth,
-    getitems: () => [...grid.wrapper.children],
+    getItems: () => [...grid.wrapper.children],
     newGrid: gridSize => {
             wrapper.style.display = 'flex';
             const itemWidth = grid.wrapperWidth/gridSize + `px`;
@@ -40,7 +40,7 @@ const paint = {
         e.currentTarget.style.backgroundColor = color.currentValue || 'black';
     },
     applyClick: () => {
-        grid.getitems().forEach(divItem => {
+        grid.getItems().forEach(divItem => {
             divItem.removeEventListener('mouseover', color.applyRainbow);
             divItem.removeEventListener('click', paint.previousColor);
             divItem.addEventListener('click', paint.getCurrentValue);
@@ -48,7 +48,7 @@ const paint = {
         paint.previousColor = paint.getCurrentValue;
     },
     applyHover: () => {
-        grid.getitems().forEach(divItem => {
+        grid.getItems().forEach(divItem => {
             divItem.removeEventListener('click', paint.previousColor);
             divItem.addEventListener('mouseover', color.applyRainbow);
         });
@@ -115,14 +115,14 @@ let menu = {
         optLabel: document.getElementById('grid-show-label'),
         setGrid: function(op) {
             this.optLabel.textContent = 'Yes';
-            grid.getitems().forEach( item => item.style.border = 'solid 1px #aaaaaa3d');
+            grid.getItems().forEach( item => item.style.border = 'solid 1px #aaaaaa3d');
             
             this.leftBtn.style.visibility = 'hidden';
             this.rightBtn.style.visibility = 'visible';
 
             if(op === 'No') {
                 this.optLabel.textContent = op;
-                grid.getitems().forEach( item => item.style.border = 'none')    
+                grid.getItems().forEach( item => item.style.border = 'none')    
 
                 this.leftBtn.style.visibility = '';
                 this.rightBtn.style.visibility = 'hidden';
