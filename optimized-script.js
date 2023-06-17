@@ -19,12 +19,12 @@ const color = {
 
 const grid = {
     wrapper: document.getElementById('wrapper'),
-    wrapperWidth: () => wrapper.offsetWidth,
+    wrapperWidth: wrapper.offsetWidth,
     items: () => gridArr = [...grid.wrapper.children],
     item: () => document.createElement('div'),
     newGrid: (gridSize) => {
             wrapper.style.display = 'flex';
-            const itemWidth = grid.wrapperWidth()/gridSize + `px`;
+            const itemWidth = grid.wrapperWidth/gridSize + `px`;
             while(wrapper.hasChildNodes()) {
                 wrapper.removeChild(wrapper.firstChild);
             };
@@ -106,7 +106,7 @@ let menu = {
             };
         },
         setBg: function(setting = 'Default') {
-            this.selBG().textContent = setting;
+            this.selBG.textContent = setting;
             grid.wrapper.style.backgroundColor = this.color[setting];              
         }            
     },
