@@ -58,7 +58,7 @@ const paint = {
 const slider = {
     range: document.getElementById('myRange'),
     rangeOutput: document.getElementById('size-p'),
-    showRange: () => {
+    updateRangeOutput: () => {
         slider.rangeOutput.textContent = `${slider.range.value} x ${slider.range.value}`
     }
 }
@@ -133,7 +133,7 @@ let menu = {
 function mainFunction() {
     grid.createGrid(slider.range.value);
     paint.applyClick();
-    slider.showRange();
+    slider.updateRangeOutput();
     menu.bgStg.chooseStg();
     menu.gridStg.setGrid();
 };
@@ -161,7 +161,7 @@ function eventListeners() {
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
 
-    slider.range.oninput = () => { slider.showRange() };
+    slider.range.oninput = () => { slider.updateRangeOutput() };
     slider.range.onchange = () => {
         grid.createGrid(slider.range.value)
         paint.applyClick();
