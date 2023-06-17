@@ -71,14 +71,14 @@ const footer = {
     }
 }
 
-let menu = {
-    bgStg: {
+let setting = {
+    backgroundColor: {
         leftBtn: document.getElementById('bg-clr--lft-btn'),
         rightBtn: document.getElementById('bg-clr--rght-btn'),
-        selBG: document.getElementById('bg-clr-label'),
+        label: document.getElementById('bg-clr-label'),
         index: 0,
         color: {
-            Default: '#a4c266',
+            Green: '#a4c266',
             White: '#FFFFFF', 
             Black: '#000000',        
         },
@@ -103,24 +103,24 @@ let menu = {
                 this.rightBtn.style.visibility = 'hidden';
             };
         },
-        setBg: function(setting = 'Default') {
-            this.selBG.textContent = setting;
-            grid.wrapper.style.backgroundColor = this.color[setting];              
+        setColor: function(color) {
+            this.label.textContent = color;
+            grid.wrapper.style.backgroundColor = this.color[color];              
         }            
     },
-    gridStg: {
+    gridLine: {
         leftBtn: document.getElementById('grid--lft-btn'),
         rightBtn: document.getElementById('grid--rght-btn'),
-        optLabel: document.getElementById('grid-show-label'),
-        setGrid: function(op) {
-            this.optLabel.textContent = 'Yes';
+        label: document.getElementById('grid-show-label'),
+        showLine: function(op) {
+            this.label.textContent = 'Yes';
             grid.getItems().forEach( item => item.style.border = 'solid 1px #aaaaaa3d');
             
             this.leftBtn.style.visibility = 'hidden';
             this.rightBtn.style.visibility = 'visible';
 
             if(op === 'No') {
-                this.optLabel.textContent = op;
+                this.label.textContent = op;
                 grid.getItems().forEach( item => item.style.border = 'none')    
 
                 this.leftBtn.style.visibility = '';
@@ -134,8 +134,9 @@ function mainFunction() {
     grid.createGrid(slider.range.value);
     paint.applyClick();
     slider.updateRangeOutput();
-    menu.bgStg.chooseStg();
-    menu.gridStg.setGrid();
+    setting.backgroundColor.chooseStg();
+    setting.gridLine.showLine();
+    setting.backgroundColor.setColor('White')
 };
 
 function eventListeners() {
@@ -158,33 +159,33 @@ function eventListeners() {
     color.rainbowBtn.addEventListener('click', paint.applyHover);
     color.clearBtn.addEventListener('click', () => {
         grid.createGrid(slider.range.value);
-        menu.gridStg.setGrid(menu.gridStg.storedStg);
+        setting.gridLine.showLine(setting.gridLine.storedStg);
     });
 
     slider.range.oninput = () => { slider.updateRangeOutput() };
     slider.range.onchange = () => {
         grid.createGrid(slider.range.value)
         paint.applyClick();
-        menu.gridStg.setGrid(menu.gridStg.storedStg);
+        setting.gridLine.showLine(setting.gridLine.storedStg);
     };
 
     footer.selectBtn.addEventListener('click', () => footer.toggleDisplay(footer.display));
 
-    menu.bgStg.leftBtn.addEventListener('click', () => {
-        menu.bgStg.chooseStg('left');
-        menu.bgStg.setBg(menu.bgStg.storedStg)});
+    setting.backgroundColor.leftBtn.addEventListener('click', () => {
+        setting.backgroundColor.chooseStg('left');
+        setting.backgroundColor.setColor(setting.backgroundColor.storedStg)});
         
-    menu.bgStg.rightBtn.addEventListener('click', () => {
-        menu.bgStg.chooseStg('right');
-        menu.bgStg.setBg(menu.bgStg.storedStg)});    
+    setting.backgroundColor.rightBtn.addEventListener('click', () => {
+        setting.backgroundColor.chooseStg('right');
+        setting.backgroundColor.setColor(setting.backgroundColor.storedStg)});    
 
-    menu.gridStg.leftBtn.addEventListener('click', () => {
-        menu.gridStg.storedStg = 'Yes';
-        menu.gridStg.setGrid(menu.gridStg.storedStg);
+    setting.gridLine.leftBtn.addEventListener('click', () => {
+        setting.gridLine.storedStg = 'Yes';
+        setting.gridLine.showLine(setting.gridLine.storedStg);
     });
-    menu.gridStg.rightBtn.addEventListener('click', () => {
-        menu.gridStg.storedStg = 'No';
-        menu.gridStg.setGrid(menu.gridStg.storedStg);
+    setting.gridLine.rightBtn.addEventListener('click', () => {
+        setting.gridLine.storedStg = 'No';
+        setting.gridLine.showLine(setting.gridLine.storedStg);
     });    
 };
 
