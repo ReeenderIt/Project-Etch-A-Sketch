@@ -19,11 +19,10 @@ const color = {
 
 const grid = {
     wrapper: document.getElementById('wrapper'),
-    wrapperWidth: wrapper.offsetWidth,
     getItems: () => [...grid.wrapper.children],
     newGrid: gridSize => {
             wrapper.style.display = 'flex';
-            const itemWidth = grid.wrapperWidth/gridSize + `px`;
+            const itemWidth = wrapper.offsetWidth/gridSize + `px`;
             while(wrapper.hasChildNodes()) {
                 wrapper.removeChild(wrapper.firstChild);
             };
