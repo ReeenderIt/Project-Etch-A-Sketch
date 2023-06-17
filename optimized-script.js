@@ -66,8 +66,8 @@ const slider = {
 const footer = {
     selectBtn: document.getElementById('select'),
     display: document.getElementById('footer-display'),
-    toggleDisplay: object => {
-        object.classList.toggle('hide-display');
+    toggleDisplay: element => {
+        element.classList.toggle('hide-display');
     }
 }
 
@@ -168,7 +168,7 @@ function eventListeners() {
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     };
 
-    footer.selectBtn.addEventListener('click', () => footer.toggleDisplay(footer.display()));
+    footer.selectBtn.addEventListener('click', () => footer.toggleDisplay(footer.display));
 
     menu.bgStg.leftBtn.addEventListener('click', () => {
         menu.bgStg.chooseStg('left');
