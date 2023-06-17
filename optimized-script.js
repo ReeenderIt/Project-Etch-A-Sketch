@@ -21,7 +21,6 @@ const grid = {
     wrapper: document.getElementById('wrapper'),
     wrapperWidth: wrapper.offsetWidth,
     items: () => gridArr = [...grid.wrapper.children],
-    item: () => document.createElement('div'),
     newGrid: (gridSize) => {
             wrapper.style.display = 'flex';
             const itemWidth = grid.wrapperWidth/gridSize + `px`;
@@ -29,7 +28,7 @@ const grid = {
                 wrapper.removeChild(wrapper.firstChild);
             };
             for (let i = 1; i < gridSize**2+1; i++) {
-                const gridItem = grid.item();
+                const gridItem = document.createElement('div');
                 gridItem.style.flexBasis = itemWidth;
                 wrapper.appendChild(gridItem);
             };
