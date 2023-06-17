@@ -20,7 +20,7 @@ const color = {
 const grid = {
     wrapper: document.getElementById('wrapper'),
     wrapperWidth: wrapper.offsetWidth,
-    items: () => gridArr = [...grid.wrapper.children],
+    items: () => [...grid.wrapper.children],
     newGrid: gridSize => {
             wrapper.style.display = 'flex';
             const itemWidth = grid.wrapperWidth/gridSize + `px`;
