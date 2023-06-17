@@ -20,7 +20,7 @@ const color = {
 const grid = {
     wrapper: document.getElementById('wrapper'),
     getItems: () => [...grid.wrapper.children],
-    newGrid: gridSize => {
+    createGrid: gridSize => {
             wrapper.style.display = 'flex';
             const itemWidth = wrapper.offsetWidth/gridSize + `px`;
             while(wrapper.hasChildNodes()) {
@@ -131,7 +131,7 @@ let menu = {
 };
 
 function mainFunction() {
-    grid.newGrid(slider.range.value);
+    grid.createGrid(slider.range.value);
     paint.applyClick();
     slider.showRange();
     menu.bgStg.chooseStg();
@@ -157,13 +157,13 @@ function eventListeners() {
     });
     color.rainbowBtn.addEventListener('click', paint.applyHover);
     color.clearBtn.addEventListener('click', () => {
-        grid.newGrid(slider.range.value);
+        grid.createGrid(slider.range.value);
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     });
 
     slider.range.oninput = () => { slider.showRange() };
     slider.range.onchange = () => {
-        grid.newGrid(slider.range.value)
+        grid.createGrid(slider.range.value)
         paint.applyClick();
         menu.gridStg.setGrid(menu.gridStg.storedStg);
     };
