@@ -66,7 +66,7 @@ const slider = {
 }
 
 const footer = {
-    selectBtn: document.getElementById('select'),
+    settingsBtn: document.getElementById('settings'),
     display: document.getElementById('footer-display'),
 
     toggleDisplay: element => {
@@ -175,7 +175,7 @@ function setupEventListeners() {
         setting.gridLine.showLine(setting.gridLine.storedStg);
     };
 
-    footer.selectBtn.addEventListener('click', () => footer.toggleDisplay(footer.display));
+    footer.settingsBtn.addEventListener('click', () => footer.toggleDisplay(footer.display));
 
     setting.backgroundColor.leftBtn.addEventListener('click', () => {
         setting.backgroundColor.chooseStg('left');
