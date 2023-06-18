@@ -13,7 +13,7 @@ const color = {
     clearBtn: document.getElementById('clear'),
 
     getInputValue: e => color.currentValue = e.currentTarget.value,
-    applyBgColor: () => color.currentValue = grid.wrapper.style.backgroundColor,
+    applyBgColor: () => color.currentValue = 'transparent',
     applyRainbow: e => e.target.style.backgroundColor = `rgb(${rng.number()}, ${rng.number()}, ${rng.number()})`,
 };
 
