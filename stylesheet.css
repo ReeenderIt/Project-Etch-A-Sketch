@@ -227,8 +227,7 @@ footer {
     border: solid 1px #bcbcbc;
 }
 
-.btn-select button:active, 
-.btn-start button:active {
+.btn-select button:active {
     transform: translate(0px,3px) scale(1, 1);
     border: solid 1px black;
     box-shadow: none;
