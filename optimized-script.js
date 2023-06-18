@@ -19,6 +19,7 @@ const color = {
 
 const grid = {
     wrapper: document.getElementById('wrapper'),
+
     getItems: () => [...grid.wrapper.children],
     createGrid: gridSize => {
             wrapper.style.display = 'flex';
@@ -58,6 +59,7 @@ const paint = {
 const slider = {
     range: document.getElementById('myRange'),
     rangeOutput: document.getElementById('size-p'),
+
     updateRangeOutput: () => {
         slider.rangeOutput.textContent = `${slider.range.value} x ${slider.range.value}`
     }
@@ -66,6 +68,7 @@ const slider = {
 const footer = {
     selectBtn: document.getElementById('select'),
     display: document.getElementById('footer-display'),
+
     toggleDisplay: element => {
         element.classList.toggle('hide-display');
     }
@@ -82,6 +85,7 @@ let setting = {
             White: '#FFFFFF', 
             Black: '#000000',        
         },
+
         chooseStg: function(op) {
             const colorKeys = Object.keys(this.color);
 
@@ -108,10 +112,12 @@ let setting = {
             grid.wrapper.style.backgroundColor = this.color[color];              
         }            
     },
+
     gridLine: {
         leftBtn: document.getElementById('grid--lft-btn'),
         rightBtn: document.getElementById('grid--rght-btn'),
         label: document.getElementById('grid-show-label'),
+
         showLine: function(op) {
             this.label.textContent = 'Yes';
             grid.getItems().forEach( item => item.style.border = 'solid 1px #aaaaaa3d');
@@ -136,7 +142,7 @@ function initialize() {
     slider.updateRangeOutput();
     setting.backgroundColor.chooseStg();
     setting.gridLine.showLine();
-    setting.backgroundColor.setColor()
+    setting.backgroundColor.setColor('Green')
 };
 
 function setupEventListeners() {
