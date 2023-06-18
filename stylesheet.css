@@ -205,14 +205,14 @@ footer {
     margin: 1em;
 }
 
-.btn-select, .btn-start {
+.btn-select {
     flex-direction: column;
     width: fit-content;
     align-items: center;
     gap: 5px;
 }
 
-.btn-select button, .btn-start button {
+.btn-select button {
     width: 5rem;
     height: 1rem;
     border: solid 1px black;
@@ -221,8 +221,7 @@ footer {
     box-shadow: 0px 2px 1px 0px black;
 }
 
-.btn-select button:hover, 
-.btn-start button:hover {
+.btn-select button:hover {
     transform: scale(1.1, 1.1);
     border: solid 1px #bcbcbc;
 }
