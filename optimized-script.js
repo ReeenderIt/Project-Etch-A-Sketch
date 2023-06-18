@@ -130,16 +130,16 @@ let setting = {
     }
 };
 
-function mainFunction() {
+function initialize() {
     grid.createGrid(slider.range.value);
     paint.applyClick();
     slider.updateRangeOutput();
     setting.backgroundColor.chooseStg();
     setting.gridLine.showLine();
-    setting.backgroundColor.setColor('White')
+    setting.backgroundColor.setColor()
 };
 
-function eventListeners() {
+function setupEventListeners() {
     color.input1.addEventListener('mouseleave', e => {
         color.getInputValue(e);
         paint.applyClick();
@@ -189,5 +189,5 @@ function eventListeners() {
     });    
 };
 
-mainFunction()
-eventListeners()
+initialize()
+setupEventListeners()
