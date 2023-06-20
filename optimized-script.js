@@ -65,15 +65,6 @@ const slider = {
     }
 }
 
-const footer = {
-    settingsBtn: document.getElementById('settings'),
-    display: document.getElementById('footer-display'),
-
-    toggleDisplay: element => {
-        element.classList.toggle('hide-display');
-    }
-}
-
 let setting = {
     backgroundColor: {
         leftBtn: document.getElementById('bg-clr--lft-btn'),
@@ -174,8 +165,6 @@ function setupEventListeners() {
         paint.applyClick();
         setting.gridLine.showLine(setting.gridLine.storedStg);
     };
-
-    footer.settingsBtn.addEventListener('click', () => footer.toggleDisplay(footer.display));
 
     setting.backgroundColor.leftBtn.addEventListener('click', () => {
         setting.backgroundColor.chooseStg('left');

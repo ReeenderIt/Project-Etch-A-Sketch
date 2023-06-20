@@ -195,37 +195,42 @@ main {
     box-shadow: none;
 }
 
-footer {
+details {
     grid-area: 4 / 1 / 5 / 2;
+    margin: 1em auto;
 }
 
-.footer-btn {
-    justify-content: center;
-    gap: 23px;
-    margin: 1em;
+details::marker { 
+    display:none; 
 }
 
-.btn-settings {
+summary { 
+    list-style: none 
+}
+
+details > summary {
+    margin: 0em auto 1em;
     border: solid 1px #bcbcbc;
     border-radius: 8px;
     background-color: #e6e6e6;
     box-shadow: 0px 3px 1px 0px black;
     padding: .5rem 1.5em;
     width: fit-content;
+    cursor: pointer;
 }
 
-.btn-settings:hover {
+.settings-btn:hover {
     transform: scale(1.1, 1.1);
     border: solid 1px black;
 }
 
-.btn-settings:active {
+.settings-btn:active {
     transform: translate(0px,3px) scale(1, 1);
     border: solid 1px black;
     box-shadow: none;
 }
 
-.footer-screen {
+.details-box {
     margin: auto;
     border-style: double;
     border-width: 2px;
