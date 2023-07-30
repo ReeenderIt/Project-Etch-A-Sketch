@@ -1,6 +1,8 @@
 # Project-Etch-A-Sketch
 
-Etch-A-Sketch App README
+Use this link to view it online:
+https://reeenderit.github.io/Project-Etch-A-Sketch/
+
 This repository contains the code for a simple paint application built using HTML, CSS, and JavaScript. The paint app allows users to draw and paint on a grid using different colors and tools.
 
 Features
